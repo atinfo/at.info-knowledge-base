@@ -1,0 +1,17 @@
+INFO:root:pytest_configure
+INFO:root:pytest_sessionstart
+DEBUG:root:6888 10180 1396867283.21 heavy operation is beginning... 1 TestFirstDEDEBUG:root:6888 10180 1396867286.21 heavy operation has ended 1 TestFirst
+DEBUG:root:6888 10180 1396867286.21 setUpClass 1 TestFDEBUG:root:5432 9924 1396867286.38 5 TestFirst
+DEBUG:root:5432 9924 1396867286.62 3 TestFirst
+DEBUG:root:5432 9924 1396867286.62 tearDownClass TestFirst
+DEBUG:root:5432 9924 1396867286.6DEBUG:root:6844 8744 1396867289.29 heavy operatiDEBUG:root:5432 9924 1396867289.63 heavy operation has ended 2 TestSecond
+DEBUG:root:5432 9924 1396867289.63 setUpClass 2 TestSecond
+DEBUG:root:5432 9924 1396867289.75 4 TestSecond
+DEBUG:root:5432 9924 1396867289.99 3 TestSecond
+DEBUG:root:5432 9924 1396867289.99 tearDownClass TestSecond
+DEBUG:root:5432 9924 1396867289.99 DEBUG:root:6844 8744 1396867292.68 heavy operDEBUG:root:5432 9924 1396867292.99 heavy operation has ended 3 TestThird
+DEBUG:root:5432 9924 1396867292.99 setUpClass 3 TestThird
+DEBUG:root:5432 9924 1396867293.11 4 TestThird
+DEBUG:root:5432 9924 1396867293.35 3 TestThird
+DEBUG:root:5432 9924 1396867293.35 tearDownClass TestThird
+DownClass TestThird

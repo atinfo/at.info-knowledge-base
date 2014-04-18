@@ -1,0 +1,226 @@
+$ nosetests --processes 5 test_debug_parallel.py
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 SecondTest
+INFO - heavy operation is beginning... 1 ThirdTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47620 140735328031504 1396607234.95 setUpClass 1 FirstTest
+INFO - heavy operation has ended 1 SecondTest
+DEBUG - 47621 140735328031504 1396607234.96 setUpClass 1 SecondTest
+INFO - heavy operation has ended 1 ThirdTest
+DEBUG - 47622 140735328031504 1396607234.98 setUpClass 1 ThirdTest
+DEBUG - 47620 140735328031504 1396607235.13 5 FirstTest
+DEBUG - 47621 140735328031504 1396607235.15 5 SecondTest
+DEBUG - 47622 140735328031504 1396607235.17 5 ThirdTest
+DEBUG - 47620 140735328031504 1396607235.25 4 FirstTest
+DEBUG - 47621 140735328031504 1396607235.27 4 SecondTest
+DEBUG - 47622 140735328031504 1396607235.29 4 ThirdTest
+DEBUG - 47620 140735328031504 1396607235.34 1 FirstTest
+DEBUG - 47621 140735328031504 1396607235.36 1 SecondTest
+DEBUG - 47622 140735328031504 1396607235.38 1 ThirdTest
+DEBUG - 47622 140735328031504 1396607235.44 _3rd ThirdTest
+DEBUG - 47621 140735328031504 1396607235.57 _2nd SecondTest
+DEBUG - 47620 140735328031504 1396607235.58 3 FirstTest
+DEBUG - 47622 140735328031504 1396607235.68 3 ThirdTest
+DEBUG - 47620 140735328031504 1396607235.73 2 FirstTest
+DEBUG - 47620 140735328031504 1396607235.73 tearDownClass FirstTest
+.....DEBUG - 47621 140735328031504 1396607235.81 3 SecondTest
+DEBUG - 47622 140735328031504 1396607235.83 2 ThirdTest
+DEBUG - 47622 140735328031504 1396607235.83 tearDownClass ThirdTest
+......DEBUG - 47621 140735328031504 1396607235.96 2 SecondTest
+DEBUG - 47621 140735328031504 1396607235.96 tearDownClass SecondTest
+......
+----------------------------------------------------------------------
+Ran 17 tests in 4.101s
+
+OK
+
+
+$ SHARE=True nosetests --processes 5 test_debug_parallel.py
+INFO - Shared: True
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47651 140735328031504 1396607263.19 setUpClass 1 FirstTest
+DEBUG - 47660 140735328031504 1396607263.37 1 FirstTest
+DEBUG - 47659 140735328031504 1396607263.37 4 FirstTest
+..DEBUG - 47658 140735328031504 1396607263.41 5 FirstTest
+.DEBUG - 47662 140735328031504 1396607263.46 2 FirstTest
+.DEBUG - 47659 140735328031504 1396607263.49 4 SecondTest
+.DEBUG - 47658 140735328031504 1396607263.5 1 SecondTest
+.DEBUG - 47661 140735328031504 1396607263.54 3 FirstTest
+.DEBUG - 47660 140735328031504 1396607263.55 5 SecondTest
+.DEBUG - 47658 140735328031504 1396607263.66 2 SecondTest
+DEBUG - 47660 140735328031504 1396607263.67 4 ThirdTest
+DEBUG - 47662 140735328031504 1396607263.68 _2nd SecondTest
+...DEBUG - 47661 140735328031504 1396607263.72 5 ThirdTest
+DEBUG - 47660 140735328031504 1396607263.73 _3rd ThirdTest
+DEBUG - 47659 140735328031504 1396607263.74 3 SecondTest
+...DEBUG - 47658 140735328031504 1396607263.75 1 ThirdTest
+.DEBUG - 47661 140735328031504 1396607263.87 2 ThirdTest
+.DEBUG - 47662 140735328031504 1396607263.92 3 ThirdTest
+.DEBUG - 47651 140735328031504 1396607263.92 tearDownClass FirstTest
+
+----------------------------------------------------------------------
+Ran 17 tests in 3.737s
+
+OK
+
+
+$ SPLIT=True nosetests --processes 5 test_debug_parallel.py
+INFO - Can Split: True
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47678 140735328031504 1396607281.78 setUpClass 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47679 140735328031504 1396607281.8 setUpClass 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47680 140735328031504 1396607281.82 setUpClass 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47681 140735328031504 1396607281.84 setUpClass 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47682 140735328031504 1396607281.85 setUpClass 1 FirstTest
+DEBUG - 47680 140735328031504 1396607281.91 1 FirstTest
+DEBUG - 47680 140735328031504 1396607281.91 tearDownClass FirstTest
+INFO - heavy operation is beginning... 2 SecondTest
+DEBUG - 47679 140735328031504 1396607281.93 4 FirstTest
+DEBUG - 47679 140735328031504 1396607281.93 tearDownClass FirstTest
+INFO - heavy operation is beginning... 2 SecondTest
+..DEBUG - 47678 140735328031504 1396607281.97 5 FirstTest
+DEBUG - 47678 140735328031504 1396607281.97 tearDownClass FirstTest
+.INFO - heavy operation is beginning... 2 SecondTest
+DEBUG - 47682 140735328031504 1396607282.01 2 FirstTest
+DEBUG - 47682 140735328031504 1396607282.01 tearDownClass FirstTest
+INFO - heavy operation is beginning... 2 SecondTest
+.DEBUG - 47681 140735328031504 1396607282.08 3 FirstTest
+DEBUG - 47681 140735328031504 1396607282.08 tearDownClass FirstTest
+INFO - heavy operation is beginning... 2 SecondTest
+.INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47680 140735328031504 1396607284.91 setUpClass 2 SecondTest
+INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47679 140735328031504 1396607284.93 setUpClass 2 SecondTest
+INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47678 140735328031504 1396607284.97 setUpClass 2 SecondTest
+INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47682 140735328031504 1396607285.01 setUpClass 2 SecondTest
+DEBUG - 47679 140735328031504 1396607285.05 4 SecondTest
+DEBUG - 47679 140735328031504 1396607285.05 tearDownClass SecondTest
+DEBUG - 47678 140735328031504 1396607285.06 1 SecondTest
+DEBUG - 47678 140735328031504 1396607285.06 tearDownClass SecondTest
+INFO - heavy operation is beginning... 3 ThirdTest
+..INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47681 140735328031504 1396607285.08 setUpClass 2 SecondTest
+DEBUG - 47680 140735328031504 1396607285.1 5 SecondTest
+DEBUG - 47680 140735328031504 1396607285.1 tearDownClass SecondTest
+INFO - heavy operation is beginning... 3 ThirdTest
+.DEBUG - 47679 140735328031504 1396607285.2 2 SecondTest
+INFO - heavy operation is beginning... 3 ThirdTest
+.DEBUG - 47682 140735328031504 1396607285.22 _2nd SecondTest
+DEBUG - 47682 140735328031504 1396607285.22 tearDownClass SecondTest
+INFO - heavy operation is beginning... 3 ThirdTest
+.DEBUG - 47681 140735328031504 1396607285.32 3 SecondTest
+DEBUG - 47681 140735328031504 1396607285.32 tearDownClass SecondTest
+INFO - heavy operation is beginning... 3 ThirdTest
+.INFO - heavy operation has ended 3 ThirdTest
+DEBUG - 47678 140735328031504 1396607288.06 setUpClass 3 ThirdTest
+INFO - heavy operation has ended 3 ThirdTest
+DEBUG - 47680 140735328031504 1396607288.1 setUpClass 3 ThirdTest
+INFO - heavy operation has ended 3 ThirdTest
+DEBUG - 47679 140735328031504 1396607288.2 setUpClass 3 ThirdTest
+DEBUG - 47680 140735328031504 1396607288.22 4 ThirdTest
+DEBUG - 47680 140735328031504 1396607288.22 tearDownClass ThirdTest
+INFO - heavy operation has ended 3 ThirdTest
+DEBUG - 47682 140735328031504 1396607288.22 setUpClass 3 ThirdTest
+DEBUG - 47678 140735328031504 1396607288.24 5 ThirdTest
+DEBUG - 47678 140735328031504 1396607288.24 tearDownClass ThirdTest
+..DEBUG - 47682 140735328031504 1396607288.28 _3rd ThirdTest
+DEBUG - 47682 140735328031504 1396607288.28 tearDownClass ThirdTest
+DEBUG - 47679 140735328031504 1396607288.3 1 ThirdTest
+DEBUG - 47679 140735328031504 1396607288.3 tearDownClass ThirdTest
+..INFO - heavy operation has ended 3 ThirdTest
+DEBUG - 47681 140735328031504 1396607288.33 setUpClass 3 ThirdTest
+DEBUG - 47680 140735328031504 1396607288.37 2 ThirdTest
+.DEBUG - 47681 140735328031504 1396607288.57 3 ThirdTest
+DEBUG - 47681 140735328031504 1396607288.57 tearDownClass ThirdTest
+.
+----------------------------------------------------------------------
+Ran 17 tests in 9.858s
+
+OK
+
+
+$ py.test -s -n 5 test_debug_parallel.py
+================================================== test session starts ==================================================
+platform darwin -- Python 2.7.5 -- py-1.4.20 -- pytest-2.5.2
+plugins: xdist
+gw0 [17] / gw1 [17] / gw2 [17] / gw3 [17] / gw4 [17]
+scheduling tests via LoadScheduling
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation is beginning... 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+INFO - heavy operation has ended 1 FirstTest
+DEBUG - 47869 140735328031504 1396607478.69 setUpClass 1 FirstTest
+DEBUG - 47870 140735328031504 1396607478.69 setUpClass 1 FirstTest
+DEBUG - 47868 140735328031504 1396607478.69 setUpClass 1 FirstTest
+DEBUG - 47872 140735328031504 1396607478.69 setUpClass 1 FirstTest
+DEBUG - 47871 140735328031504 1396607478.69 setUpClass 1 FirstTest
+DEBUG - 47869 140735328031504 1396607478.78 1 FirstTest
+DEBUG - 47869 140735328031504 1396607478.78 tearDownClass FirstTest
+.INFO - heavy operation is beginning... 2 SecondTest
+DEBUG - 47872 140735328031504 1396607478.81 4 FirstTest
+DEBUG - 47872 140735328031504 1396607478.81 tearDownClass FirstTest
+.INFO - heavy operation is beginning... 2 SecondTest
+DEBUG - 47870 140735328031504 1396607478.84 2 FirstTest
+DEBUG - 47870 140735328031504 1396607478.84 tearDownClass FirstTest
+.INFO - heavy operation is beginning... 2 SecondTest
+DEBUG - 47868 140735328031504 1396607478.87 5 FirstTest
+DEBUG - 47868 140735328031504 1396607478.87 tearDownClass FirstTest
+.INFO - heavy operation is beginning... 2 ThirdTest
+DEBUG - 47871 140735328031504 1396607478.93 3 FirstTest
+DEBUG - 47871 140735328031504 1396607478.93 tearDownClass FirstTest
+.INFO - heavy operation is beginning... 2 ThirdTest
+INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47869 140735328031504 1396607481.79 setUpClass 2 SecondTest
+INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47872 140735328031504 1396607481.83 setUpClass 2 SecondTest
+INFO - heavy operation has ended 2 SecondTest
+DEBUG - 47870 140735328031504 1396607481.84 setUpClass 2 SecondTest
+INFO - heavy operation has ended 2 ThirdTest
+DEBUG - 47868 140735328031504 1396607481.88 setUpClass 2 ThirdTest
+DEBUG - 47872 140735328031504 1396607481.92 1 SecondTest
+.INFO - heavy operation has ended 2 ThirdTest
+DEBUG - 47871 140735328031504 1396607481.95 setUpClass 2 ThirdTest
+DEBUG - 47869 140735328031504 1396607481.97 5 SecondTest
+.DEBUG - 47871 140735328031504 1396607482.04 1 ThirdTest
+.DEBUG - 47868 140735328031504 1396607482.06 5 ThirdTest
+.DEBUG - 47870 140735328031504 1396607482.09 3 SecondTest
+DEBUG - 47869 140735328031504 1396607482.1 4 SecondTest
+DEBUG - 47869 140735328031504 1396607482.1 tearDownClass SecondTest
+..DEBUG - 47871 140735328031504 1396607482.1 _3rd ThirdTest
+DEBUG - 47871 140735328031504 1396607482.1 tearDownClass ThirdTest
+INFO - heavy operation is beginning... 3 ThirdTest
+.DEBUG - 47872 140735328031504 1396607482.13 _2nd SecondTest
+DEBUG - 47872 140735328031504 1396607482.13 tearDownClass SecondTest
+INFO - heavy operation is beginning... 3 ThirdTest
+.DEBUG - 47868 140735328031504 1396607482.18 4 ThirdTest
+DEBUG - 47868 140735328031504 1396607482.18 tearDownClass ThirdTest
+.DEBUG - 47870 140735328031504 1396607482.24 2 SecondTest
+DEBUG - 47870 140735328031504 1396607482.24 tearDownClass SecondTest
+.INFO - heavy operation has ended 3 ThirdTest
+DEBUG - 47871 140735328031504 1396607485.1 setUpClass 3 ThirdTest
+INFO - heavy operation has ended 3 ThirdTest
+DEBUG - 47872 140735328031504 1396607485.13 setUpClass 3 ThirdTest
+DEBUG - 47871 140735328031504 1396607485.25 2 ThirdTest
+DEBUG - 47871 140735328031504 1396607485.26 tearDownClass ThirdTest
+.DEBUG - 47872 140735328031504 1396607485.38 3 ThirdTest
+DEBUG - 47872 140735328031504 1396607485.38 tearDownClass ThirdTest
+.
+============================================== 17 passed in 10.19 seconds ===============================================
