@@ -15,7 +15,7 @@ Inside of project you will see:
 
 
 Test look like this, so please have a look how it's implemented:
-```
+```java
 package info.testing.automated.sikuli.examples;
 
 import info.testing.automated.sikuli.core.Desktop;
