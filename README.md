@@ -7,3 +7,9 @@ Feel free to add and share with test automation communite any examples you wante
 Keep it automated! :)
 
 
+Small requirements to pull requests
+======================
+
+1. Code should be workable
+2. Folder's name should be informative and describe what examples are about.
+3. There should be README.md file in root folder with small description of example
