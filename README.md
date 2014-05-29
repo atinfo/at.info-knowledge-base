@@ -10,17 +10,16 @@ Keep it automated! :)
 Contribution Guidelines
 ======================
 
-1. Fork
-2. Implement Something
-3. Submit a Pull Request
-4. Create code recipe on <a href="http://automated-testing.info/t/gotovye-reczepty-ili-aktivizacziya-soobshhestva-avtomatizatorov-na-atinfo/4441">http://automated-testin.info</a>
+1. *Fork*
+2. *Implement* Something
+3. Submit a *Pull Request*
+4. *Create code recipe* on <a href="http://automated-testing.info/t/gotovye-reczepty-ili-aktivizacziya-soobshhestva-avtomatizatorov-na-atinfo/4441">http://automated-testin.info</a> For example, like this http://automated-testing.info/t/code-recipe-kak-ispolzovat-sikuli-c-webdriver-primer-dlya-http-automated-testing-info/4586
 4. High Five!
 
 
 Small requirements to pull requests
 ======================
 
-1. Workable code
-2. Folder's name informative
-3. README.md in root is obligatory (please have a look to already existed examples)
-4. Once pull request is accepted. Please <a href="http://automated-testing.info/t/gotovye-reczepty-ili-aktivizacziya-soobshhestva-avtomatizatorov-na-atinfo/4441">create code recipe on http://automated-testing.info</a>. For example, like this http://automated-testing.info/t/code-recipe-kak-ispolzovat-sikuli-c-webdriver-primer-dlya-http-automated-testing-info/4586
+1. *Workable code*
+2. Folder's name and all other names should be *informative*
+3. *README.md* in root is obligatory (please have a look to already existed examples)
