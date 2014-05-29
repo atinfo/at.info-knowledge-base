@@ -768,7 +768,6 @@ header p {
   background-color: #ffeca0;
 }
 #banner .fork {
-  position: fixed;
   left: 10%;
   /*margin-left: -325px;*/
   padding: 10px 12px;
@@ -810,6 +809,33 @@ header p {
   top: 7px;
   display: block;
   background: url(../images/octocat-logo.png);
+}
+
+a.button.green {
+  text-transform:uppercase;  
+  height: 2em;
+  padding-left: .625em;
+  padding-right: .625em;
+  cursor: pointer;  
+  color: white;
+  text-shadow: 0 1px rgba(0,0,0,0.15);
+  background: #59b329;
+  position: relative;
+  display: block;
+  width: 50%;
+  height: auto;
+  line-height: 2.75em;
+  font-weight: bold;
+  padding-bottom: 3px;
+  -webkit-box-shadow: inset 0 -2px rgba(255,255,255,0.1),inset 0 -3px rgba(0,0,0,0.1),0 1px rgba(0,0,0,0.05);
+  -webkit-transition: 0.1s; 
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s; 
+  -webkit-transition-property: background,color,opacity,border-color,text-shadow; 
+  -moz-transition-property: background,color,opacity,border-color,text-shadow;
+  -o-transition-property: background,color,opacity,border-color,text-shadow;
+   transition-property: background,color,opacity,border-color,text-shadow; 
 }
 
 section {
