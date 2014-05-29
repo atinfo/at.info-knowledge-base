@@ -1,7 +1,7 @@
 at.info knowledge base
 ======================
 
-http://automated-testing.info knowledge base is basement to provide different examples on test automation topics for different tools.
+http://automated-testing.info knowledge base is basement to provide different examples on test automation topics for different tools. Please have a look to overview page http://atinfo.github.io/at.info-knowledge-base/
 
 Feel free to add and share with test automation communite any examples you wanted. Create pull request and share it.
 Keep it automated! :)
