@@ -565,7 +565,7 @@ strong {
 }
 
 .wrapper {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   position: relative;
 }
@@ -579,6 +579,22 @@ blockquote {
   margin: 0;
   padding: 0 0 0 20px;
   font-style: italic;
+}
+
+label {
+  font-family: "Lucida Sans", Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+  font-size: 13px;
+  color: #ffffff;
+  /*text-shadow: 0px 1px 0px #000;*/
+  margin: 0 1px;
+  padding: 2px 6px;
+  background: #6C9953;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
 }
 
 code {
