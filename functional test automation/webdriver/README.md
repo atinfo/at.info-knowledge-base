@@ -33,3 +33,22 @@ Possible topics to be covered. Feel free to suggest\add an item to list or cover
 * Reporting, human readable
 * Flexible test execution with tagging
 * Automating test runs with Continuous Integration
+* Selenium 2 WebDriver API
+* Using WebDriver to navigate web applications
+* Basic web Element identification using id, name and
+* Locating web elements using CSS and XPath
+* Use of Chrome Developer tools and Firebug
+* WebDriver commands to Interrogate WebElements and pages
+* JUnit annotations to structure test code
+* HamCrest commands for test assertions
+* WebDriver commands for Interaction and Manipulation
+* Using JavaScript in your tests
+* Handling Alerts
+* Working with Cookies
+* Synchronisation strategies
+* Implicit vs Explicit Waits
+* Explicit waits using ExpectedConditions
+* Explicit waits using custom expected conditions
+* Refactoring to Abstraction layers, Page Object Models and Domain Objects
+* Page Object Modelling Approaches
+* Running tests on multiple browsers: Firefox, Google Chrome
