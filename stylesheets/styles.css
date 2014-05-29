@@ -503,7 +503,7 @@ table {
 }
 
 body {
-  font: 14px/22px "Quattrocento Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 18px/30px "Quattrocento Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #666;
   font-weight: 300;
   margin: 0px;
@@ -565,7 +565,7 @@ strong {
 }
 
 .wrapper {
-  width: 650px;
+  width: 80%;
   margin: 0 auto;
   position: relative;
 }
@@ -708,6 +708,11 @@ header p {
   border-radius: 0px 2px 2px 0px;
   padding-right: 10px;
 }
+
+#banner .paricipate {
+  padding-top: 10px
+}
+
 #banner .button {
   border: 1px solid #dba500;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffe788), color-stop(100%, #ffce38));
@@ -748,8 +753,8 @@ header p {
 }
 #banner .fork {
   position: fixed;
-  left: 50%;
-  margin-left: -325px;
+  left: 10%;
+  /*margin-left: -325px;*/
   padding: 10px 12px;
   margin-top: 6px;
   line-height: 14px;
@@ -792,7 +797,7 @@ header p {
 }
 
 section {
-  width: 590px;
+  width: 100%;
   padding: 30px 30px 50px 30px;
   margin: 20px 0;
   margin-top: 190px;
@@ -850,7 +855,7 @@ nav ul a:hover {
   color: #999;
 }
 
-footer {
+/*footer {
   width: 180px;
   position: fixed;
   left: 50%;
@@ -858,6 +863,15 @@ footer {
   bottom: 20px;
   text-align: right;
   line-height: 16px;
+}*/
+
+footer {
+  text-align: center;
+  margin: 20px auto;
+  position: relative;
+  left: auto;
+  bottom: auto;
+  width: auto;
 }
 
 @media print, screen and (max-width: 1060px) {
