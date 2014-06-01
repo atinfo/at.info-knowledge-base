@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 public class DynamicLocatorsTests {
 
     @Test
-    public void selectCategory() {
+    public void selectCategoryAndTopic() {
         WebDriver driver = null;
         SoftAssert softAssert = new SoftAssert();
 
