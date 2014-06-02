@@ -13,7 +13,7 @@ Contribution Guidelines
 1. **Fork**
 2. **Implement** Something
 3. Submit a **Pull Request**
-4. **Create code recipe** on <a href="http://automated-testing.info/t/gotovye-reczepty-ili-aktivizacziya-soobshhestva-avtomatizatorov-na-atinfo/4441">http://automated-testin.info</a> For example, like this http://automated-testing.info/t/code-recipe-kak-ispolzovat-sikuli-c-webdriver-primer-dlya-http-automated-testing-info/4586
+4. <a href="http://automated-testing.info/t/gotovye-reczepty-ili-aktivizacziya-soobshhestva-avtomatizatorov-na-atinfo/4441">**Create code recipe** on http://automated-testing.info</a> For example, like this http://automated-testing.info/t/code-recipe-kak-ispolzovat-sikuli-c-webdriver-primer-dlya-http-automated-testing-info/4586
 4. High Five!
 
 
