@@ -62,3 +62,22 @@ public class DynamicLocatorsTests {
     }
 }
 ```
+
+And locators look like this
+
+```java
+    @HTML(searchBy = XPATH, value = "//tbody/tr[?]/td[?]/a")
+    private HTMLElement gridCells;
+
+    @HTML(searchBy = CSS_SELECTOR, value = "li > .home")
+    private HTMLElement linkAllCategories;
+
+    @HTML(searchBy = XPATH, value = "//*[@class='category-dropdown-menu']//a[text()='?']")
+    private HTMLElement linkCategoryInList;
+
+    @HTML(searchBy = CSS_SELECTOR, value = "h1 > .badge-category")
+    private HTMLElement linkBadgeCategory;
+
+    @HTML(searchBy = CSS_SELECTOR, value = ".topic-creator > h3 > a")
+    private HTMLElement linkTopicCreator;
+```
