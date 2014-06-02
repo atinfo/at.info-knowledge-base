@@ -25,8 +25,9 @@ Small requirements to pull requests
 3. **README.md** with description in root is obligatory (<a href="https://github.com/atinfo/at.info-knowledge-base/blob/master/functional%20test%20automation/webdriver/methods-interceptor-on-java/README.md">please have a look to already existed examples</a>)
 
 
-Examples timeline
+Timeline on added examples
 ======================
+Also you can see it on http://atinfo.github.io/at.info-knowledge-base/
 
 <ul>
             <li> <label>webdriver</label> <label>java</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/webdriver/custom-locators-on-java">How to create custom locators dynamically</a> </li>
