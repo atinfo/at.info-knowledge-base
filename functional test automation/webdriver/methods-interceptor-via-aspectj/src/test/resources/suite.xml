@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test suite" parallel="tests" thread-count="1">
+    <test name="Test set">
+        <classes>
+            <class name="info.testing.automated.tests.MethodsInterceptorTests">
+                <methods>
+                    <include name="interceptAndPublish"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
