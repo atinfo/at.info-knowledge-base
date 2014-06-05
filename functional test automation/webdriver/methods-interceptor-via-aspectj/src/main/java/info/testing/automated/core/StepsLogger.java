@@ -17,7 +17,7 @@ public class StepsLogger {
     private static final ThreadLocal<List<String>> METHODS_CALLS = new ThreadLocal<>();
 
     @Before("execution(@info.testing.automated.annotations.Publish * info.testing.automated.pages..*.*(..))")
-    public void beforeInvocation(JoinPoint joinPoint) throws Throwable {
+    public void beforeInvocation(final JoinPoint joinPoint) throws Throwable {
         getMethodsCallsList().add(joinPoint.getSignature().getName() +
                 "(" + Arrays.deepToString(joinPoint.getArgs()).replaceAll("\\[|\\]", "") + ")");
     }

@@ -14,7 +14,7 @@ public class SamplePage extends BasePage {
     }
 
     @Publish
-    public SamplePage firstAction(String arg) {
+    public SamplePage firstAction(final String arg) {
         return this;
     }
 
@@ -23,7 +23,7 @@ public class SamplePage extends BasePage {
     }
 
     @Publish
-    public SamplePage thirdAction(String arg) {
+    public SamplePage thirdAction(final String arg) {
         return this;
     }
 
