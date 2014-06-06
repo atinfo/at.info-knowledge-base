@@ -52,7 +52,7 @@ public class MethodsInterceptorTests extends BaseTest {
 ```
 And implementetion of aspect looks like this:
 
-```
+```java
 @Aspect
 public class StepsLogger {
 
