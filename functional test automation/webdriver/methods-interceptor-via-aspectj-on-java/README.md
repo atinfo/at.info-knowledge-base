@@ -6,6 +6,8 @@ But in comparison to java reflection, this particular code uses AOP / aspects fo
 
 Implemented via maven, testng, aspectj.
 
+Alos please see related developers discussions on http://automated-testing.info/t/code-recipe-ispolzovanie-java-reflection-dlya-monitoringa-vyzovov-metodov-testovogo-klassa-s-maven-testng-i-javassist/4592
+
 Main usage: collecting steps that were intercepted during tests' execution. This data could be used in
 test results report for increasing understanding of what was tested.
 
