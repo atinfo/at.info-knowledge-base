@@ -22,7 +22,7 @@ Small requirements to pull requests
 
 1. **Workable code**
 2. Folder's name and all other names should be **informative**
-3. **README.md** with description in root is obligatory (<a href="https://github.com/atinfo/at.info-knowledge-base/blob/master/functional%20test%20automation/webdriver/methods-interceptor-on-java/README.md">please have a look to already existed examples</a>)
+3. **README.md** with description in root is obligatory (<a href="https://github.com/atinfo/at.info-knowledge-base/blob/master/functional%20test%20automation/webdriver/methods-interceptor-via-aspectj-on-java/README.md">please have a look to already existed examples</a>)
 
 
 Timeline on added examples
