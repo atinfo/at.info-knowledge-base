@@ -1,4 +1,3 @@
-__author__ = 'Valik'
 from selenium import selenium
 
 class SeleniumWrapper(object):

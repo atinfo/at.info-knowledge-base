@@ -1,4 +1,3 @@
-__author__ = 'Valik'
 from SeleniumWrapper import SeleniumWrapper as wrapper
 
 from homepage import HomePage
