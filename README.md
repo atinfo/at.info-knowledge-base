@@ -30,6 +30,7 @@ Timeline on added examples
 Also you can see it on http://atinfo.github.io/at.info-knowledge-base/
 
 <ul>
+            <li> <label>webdriver</label> <label>python</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/webdriver/typed%20webelements%20on%20python" target="_blank">How to create typed webelements for your webdriver python tests</li>
             <li> <label>robot framework</label> <label>python</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/robotframework/Simple%20Hybrid%20(Python%20%2B%20Robotframework)%20Page%20Object%20Example" target="_blank">Simple Hybrid (Python + Robotframework) Page Object Example</li>
             <li> <label>webdriver</label> <label>java</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/webdriver/methods-interceptor-via-aspectj-on-java">How to intercept methods calls for collecting test steps via aspectj</a> </li>
             <li> <label>webdriver</label> <label>java</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/webdriver/custom-locators-on-java">How to create custom locators dynamically</a> </li>
