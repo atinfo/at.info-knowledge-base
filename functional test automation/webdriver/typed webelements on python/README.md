@@ -27,4 +27,4 @@ print element.get_href()
 driver.close()
 ```
 
-Related discussions can be found on http://automated-testing.info
+Related discussions can be found on http://automated-testing.info/t/code-recipe-kak-bystro-i-prosto-sozdat-kastomnye-tipizirovannye-elementy-dlya-vashih-webdriver-testov-na-python/4665
