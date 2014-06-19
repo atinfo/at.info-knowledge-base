@@ -2,11 +2,13 @@
 
 When you create your web test automation with python and webdriver there is not typed webelement support out of the box. How it can be implemented?
 
+*Also link provided on our github page http://atinfo.github.io/at.info-knowledge-base/
+
 # Solution
 
 Implemented with webdriver and python
 
-One of the solution you can you it's just to create custom weblement class that will inherit from `from selenium.webdriver.remote.webelement import WebElement`. And then you can add some additional methods you need up to your purpose.
+One of the solution you can use it's just to create custom weblement class that will inherit from `from selenium.webdriver.remote.webelement import WebElement`. And then you can add some additional methods you need up to your purpose.
 
 For example how to create Link type element with some special method:
 
