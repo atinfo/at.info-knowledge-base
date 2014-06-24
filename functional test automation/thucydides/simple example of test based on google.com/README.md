@@ -2,12 +2,20 @@
 
 
 1) GoogleNavigationAndSearch - Main.
+
 2) GoogleNavigation - Steps.
+
 3) Google - class to find elements.
+
 4) Application - specify stories.
+
 5) PropertiesReader - class to upload values from file (e.g. Google.properties).
+
 6) Google.properties - file with test-data.
+```
 (e.g.)searchQuery = testing;
+```
+
 7) POM.
 
 
