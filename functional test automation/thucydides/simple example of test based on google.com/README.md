@@ -1,5 +1,10 @@
 #How to create simple test Using Java+JUnit+Thucydides
 
+Goal is to show how to create simplest test automation scenario by means of Java, JUnit and Thucydides so newbie can try to experiment with code further. 
+
+
+# Classes descriptions
+
 
 1) GoogleNavigationAndSearch - Main.
 
@@ -19,10 +24,12 @@
 7) POM.
 
 
-Google Seach simple test:
+Google Seach simple test will look like this:
+```java
+google.start_browser(); // Start browser
+google.input_search_query(keyWords.getProperty("searchQuery")); // Input search query 
+google.click_to_submit_search_query(); // Click button to submit query
+Thread.sleep(15000); // Wait to verify that that everything is working well
 ```
-Start browser - google.start_browser();
-Input search query - google.input_search_query(keyWords.getProperty("searchQuery"));
-Click button to submit query - google.click_to_submit_search_query();
-Wait to verify that that everything is working well - Thread.sleep(15000);
-```
+
+Related discussion on provided example you can find on http://automated-testing.info/t/thucydides-simple-test/4701
