@@ -4,15 +4,12 @@ Implemented via maven, junit.
 
 Main usage: collecting tests failed during tests execution into junit test suite
 
-Inside of project you will see:
-
-Implementation for getting test results from:
+Inside of project you will see implementation for getting test results from:
  * TeamCity build by build id
  * Latest TeamCity build
  * TeamCity tests csv file
-
-Filtering tool for getting only failed tests
-JUnit test suites for all that cases
+ * Filtering tool for getting only failed tests
+ * JUnit test suites for all that cases
 
 If you want to run tests from defined build, you should set maven parameter -Dbuild.type as descriptor for build you need
 
