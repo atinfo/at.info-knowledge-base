@@ -19,9 +19,8 @@ public final class RunLatestBuildFailedTests {
     public static TestSuite suite() {
         TestSuite suite = new TestSuite();
         Set<Class> classes = null;
-        System.setProperty("build.type", "Datapine_Chrome");
         try {
-            classes = new TeamCity()/*.openSSHTunnel()*/.getLatestBuildResults().getFailedTestClasses();
+            classes = new TeamCity().getLatestBuildResults().getFailedTestClasses();
         } catch (Exception e) {/**/}
         if (classes != null)
             for (Class failedTestClass : classes) {

@@ -11,3 +11,29 @@ Implementation for getting test results from:
  * TeamCity tests csv file
 Filtering tool for getting only failed tests
 JUnit test suites for all that cases
+
+If you want to run tests from defined build, you should set maven parameter -Dbuild.type as descriptor for build you need
+
+```java
+@RunWith(AllTests.class)
+public final class RunLatestBuildFailedTests {
+    public static TestSuite suite() {
+        TestSuite suite = new TestSuite();
+        Set<Class> classes = null;
+        try {
+            classes = new TeamCity().getLatestBuildResults().getFailedTestClasses();
+        } catch (Exception e) {/**/}
+        if (classes != null)
+            for (Class failedTestClass : classes) {
+                if (failedTestClass != null) {
+                    suite.addTest(new JUnit4TestAdapter(failedTestClass));
+                }
+
+            }
+        return suite;
+    }
+}
+
+If you CI server is available via ssh only, set up ssh connection properties in the  ssh.tunnel.properties file and use
+```java
+new TeamCity().openSSHTunnel().getLatestBuildResults()
