@@ -2,7 +2,7 @@
 
 Implemented via maven, junit.
 
-Main usage: collecting tests failed during tests execution into junit test suite
+**Main usage**: collecting failed tests during tests execution into junit test suite so then you can rerun only failed tests up to your needs
 
 Inside of project you will see implementation for getting test results from:
  * TeamCity build by build id
