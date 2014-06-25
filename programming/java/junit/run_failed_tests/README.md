@@ -4,6 +4,8 @@ Implemented via maven, junit.
 
 **Main usage**: collecting failed tests during tests execution into junit test suite so then you can rerun only failed tests up to your needs
 
+Related discussion of described topic http://automated-testing.info/t/avtomaticheskij-perezapusk-upavshih-testov-s-pomoshhyu-java-maven-teamcity-junit/4712
+
 Inside of project you will see implementation for getting test results from:
  * TeamCity build by build id
  * Latest TeamCity build
