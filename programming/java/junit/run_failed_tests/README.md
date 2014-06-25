@@ -33,7 +33,9 @@ public final class RunLatestBuildFailedTests {
         return suite;
     }
 }
-
+```
 If you CI server is available via ssh only, set up ssh connection properties in the  ssh.tunnel.properties file and use
+
 ```java
 new TeamCity().openSSHTunnel().getLatestBuildResults()
+```
