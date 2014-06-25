@@ -30,6 +30,7 @@ Timeline on added examples
 Also you can see it on http://atinfo.github.io/at.info-knowledge-base/
 
 <ul>
+            <li> <label>teamcity</label> <label>junit</label> <label>java</label> <label>maven</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/programming/java/junit/run_failed_tests" target="_blank">How to rerun the only failed tests from TeamCity build</li>
             <li> <label>thucydides</label> <label>junit</label> <label>java</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/thucydides/simple%20example%20of%20test%20based%20on%20google.com" target="_blank">How to create simplest webdriver bdd test using Java+JUnit+Thucydides</li>
             <li> <label>webdriver</label> <label>python</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/webdriver/typed%20webelements%20on%20python" target="_blank">How to create typed webelements for your webdriver python tests</li>
             <li> <label>robot framework</label> <label>python</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/robotframework/Simple%20Hybrid%20(Python%20%2B%20Robotframework)%20Page%20Object%20Example" target="_blank">Simple Hybrid (Python + Robotframework) Page Object Example</li>
