@@ -7,9 +7,10 @@ Main usage: saving key/value pairs - name=locator - by a given path.
 
 Inside of project you will see: 
  
- - Common FirePath extension sources downloaded from https://code.google.com/p/firepath/source/checkout
+ - Common FirePath extension sources downloaded from [SVN repository](https://code.google.com/p/firepath/source/checkout)
  - Custom UI components implementation: locator name, file path, save button.
  - Custom saving method, that can parse existing / create new file and add / replace selected locator by specified name.
 
-Final FirePath layout would be the following:
+Final *FirePath* layout would be the following:
+
 ![firepath layout](http://2.bp.blogspot.com/-BpJ6OhvL8u4/U7LGF79MoTI/AAAAAAAAAR4/mnSGAjE2gk8/s1600/panel+view.png)
