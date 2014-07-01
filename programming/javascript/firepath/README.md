@@ -11,6 +11,6 @@ Inside of project you will see:
  - Custom UI components implementation: locator name, file path, save button.
  - Custom saving method, that can parse existing / create new file and add / replace selected locator by specified name.
 
-Final *FirePath* layout would be the following:
+Final **FirePath** layout would be the following:
 
 ![firepath layout](http://2.bp.blogspot.com/-BpJ6OhvL8u4/U7LGF79MoTI/AAAAAAAAAR4/mnSGAjE2gk8/s1600/panel+view.png)
