@@ -2,7 +2,9 @@ Javascript / XUL example: how to modify FirePath extension to allow saving locat
 ======
 
 Implemented via JS, XUL.
+
 Main usage: saving key/value pairs - name=locator - by a given path.
+
 You can find detailed instruction in the following [article](http://qa-automation-notes.blogspot.com/2014/07/firepath-upgrade-saving-locators-in.html).
 
 Inside of project you will see: 
