@@ -1,0 +1,969 @@
+<?xml version="1.0"?>
+<!DOCTYPE bindings SYSTEM "chrome://firepath/locale/FirePath.dtd">
+<!--
+	Copyright (C) 2009 - 2010 Pierre Tholence
+	
+	This file is part of FirePath
+	
+	FirePath is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	FirePath is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with FirePath.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <binding id="FirePath-textbox" extends="chrome://global/content/bindings/textbox.xml#textbox">
+        <implementation>
+
+            <field name="_firePathBar">null</field>
+            <property name="firePathBar" readonly="true">
+                <getter><![CDATA[
+					return this._firePathBar ?
+					this._firePathBar : this._firePathBar = document.getBindingParent(this);
+				]]></getter>
+            </property>
+
+            <method name="setStatus">
+                <parameter name="status"/>
+                <parameter name="info"/>
+                <body><![CDATA[
+					if(status)
+						this.setAttribute("status", status);
+					else
+						this.removeAttribute("status");
+					this.tooltipText = info || "";
+				]]></body>
+            </method>
+
+            <method name="checkSyntax">
+                <body><![CDATA[
+					if (this.value === "" || this.firePathBar.isValidSelector(this.value)) {
+						this.setStatus();
+					} else {
+						this.setStatus("error", FBL.$STR_XP("invalidSelectorError-" + this.firePathBar.evaluationMode));
+					}
+				]]></body>
+            </method>
+
+            <method name="setValue">
+                <parameter name="value"/>
+                <body><![CDATA[
+					this.value = value;
+					this.checkSyntax();
+				]]></body>
+            </method>
+        </implementation>
+        <handlers>
+            <handler event="input"><![CDATA[
+				this.checkSyntax();
+				this.firePathBar.autoCompleter.reset();
+			]]></handler>
+            <handler event="keypress"><![CDATA[
+				switch (event.keyCode) {
+					case KeyEvent.DOM_VK_RETURN:
+						this.firePathBar.evaluate();
+						break;
+					case KeyEvent.DOM_VK_UP:
+						this.firePathBar.autoCompleter.complete(Firebug.currentContext, this, true, true);
+						this.checkSyntax();
+						break;
+					case KeyEvent.DOM_VK_TAB:
+						event.preventDefault();
+					case KeyEvent.DOM_VK_DOWN:
+						this.firePathBar.autoCompleter.complete(Firebug.currentContext, this, true, false);
+						this.checkSyntax();
+						break;
+				}
+			]]></handler>
+        </handlers>
+    </binding>
+
+    <binding id="FirePathBar" extends="xul:hbox">
+        <content>
+            <xul:toolbarseparator/>
+            <xul:toolbaritem align="center" flex="1">
+                <xul:toolbarbutton anonid="mode-selector-button" accesskey="&FirePath.xPath.key;" type="menu"
+                                   oncommand="document.getBindingParent(this).changeMode(event)">
+                    <xul:menupopup>
+                        <xul:menuitem mode="xpath" label="&FirePath.xPath.label;" accesskey="&FirePath.xPath.key;"/>
+                        <xul:menuitem mode="css" label="&FirePath.CSS.label;" accesskey="&FirePath.CSS.key;"/>
+                        <xul:menuitem mode="sizzle" label="&FirePath.Sizzle.label;" accesskey="&FirePath.Sizzle.key;"/>
+                    </xul:menupopup>
+                </xul:toolbarbutton>
+                <xul:hbox class="firepath-field-container" flex="1">
+                    <xul:textbox anonid="firepath-textbox" id="firePathBar-firepath-textbox" class="firepath-textbox"
+                                 flex="1"/>
+                </xul:hbox>
+            </xul:toolbaritem>
+            <xul:toolbarseparator/>
+            <xul:toolbaritem anonid="firepath-context-toolbar-locator" align="center" flex="1">
+                <xul:label value="&FirePath.context.label.locator;" control="firePathBar-parent-textbox-locator"/>
+                <xul:hbox class="firepath-field-container" flex="1">
+                    <xul:textbox anonid="firepath-textbox-locator-name" id="firePathBar-firepath-textbox-locator"
+                                 class="firepath-textbox-no-validation" flex="1"/>
+                </xul:hbox>
+            </xul:toolbaritem>
+            <xul:toolbarseparator/>
+            <xul:toolbaritem anonid="firepath-context-toolbar-save-file" align="center" flex="1">
+                <xul:label value="&FirePath.context.label.pageobject;"
+                           control="firePathBar-parent-textbox-pageobject-path"/>
+                <xul:hbox class="firepath-field-container" flex="1">
+                    <xul:textbox anonid="firepath-textbox-pageobject-path"
+                                 id="firePathBar-firepath-textbox-pageobject-path"
+                                 class="firepath-textbox-no-validation" flex="1"/>
+                </xul:hbox>
+            </xul:toolbaritem>
+            <xul:toolbarbutton label="&FirePath.context.label.save.button;"
+                               oncommand="document.getBindingParent(this).saveLocator();"/>
+            <xul:toolbarseparator/>
+            <xul:toolbaritem anonid="firepath-context-toolbar" align="center" flex="1">
+                <xul:label value="&FirePath.context.label;" control="firePathBar-parent-textbox"
+                           accesskey="&FirePath.context.key;"/>
+                <xul:hbox class="firepath-field-container" flex="1">
+                    <xul:textbox anonid="parent-textbox" id="firePathBar-parent-textbox" class="firepath-textbox"
+                                 flex="1"/>
+                </xul:hbox>
+                <xul:textbox anonid="parent-node-number-textbox"
+                             type="number"
+                             size="1"
+                             min="1"
+                             onchange="document.getBindingParent(this).evaluate();"
+                             collapsed="true"
+                             increment="1"/>
+            </xul:toolbaritem>
+            <xul:toolbarbutton label="&FirePath.eval.button;" oncommand="document.getBindingParent(this).evaluate();">
+            </xul:toolbarbutton>
+        </content>
+        <implementation>
+
+            <!--******************************************************************************************************
+                fields and properties
+            -->
+
+            <field name="NSResolver">null</field>
+            <field name="parentNodes">null</field>
+            <field name="lastSelector">null</field>
+            <field name="lastParent">null</field>
+            <field name="lastParentSelector">null</field>
+            <field name="_evaluator">null</field>
+
+            <property name="autoCompleter" readonly="true">
+                <getter><![CDATA[
+					if(this.evaluationMode === 'xpath'){
+						return this._autoCompleter ?
+						this._autoCompleter : this._autoCompleter = new Firebug.FirePathPanel.xPathAutoCompleter(this);
+					} else {
+						return {
+							complete: function(){
+								return [];
+							},
+							reset: function(){}
+						};
+					}
+				]]></getter>
+            </property>
+
+            <property name="xPathEvaluator" readonly="true">
+                <getter><![CDATA[
+					return this._evaluator ?
+					this._evaluator : this._evaluator = new XPathEvaluator();
+				]]></getter>
+            </property>
+
+            <property name="selector">
+                <getter><![CDATA[
+					return this.getElement("firepath-textbox").value;
+				]]></getter>
+                <setter><![CDATA[
+					this.getElement("firepath-textbox").setValue(val);
+					return val;
+				]]></setter>
+            </property>
+
+            <property name="locatorName">
+                <getter><![CDATA[
+					return this.getElement("firepath-textbox-locator-name").value;
+				]]></getter>
+                <setter><![CDATA[
+					this.getElement("firepath-textbox-locator-name").setValue(val);
+					return val;
+				]]></setter>
+            </property>
+
+            <property name="filePath">
+                <getter><![CDATA[
+					return this.getElement("firepath-textbox-pageobject-path").value;
+				]]></getter>
+                <setter><![CDATA[
+					this.getElement("firepath-textbox-pageobject-path").setValue(val);
+					return val;
+				]]></setter>
+            </property>
+
+            <property name="parentSelector">
+                <getter><![CDATA[
+					var textbox = this.getElement("parent-textbox");
+					if(this.evaluationMode === 'xpath' && textbox.value == "")
+						textbox.value = "/";
+					return textbox.value;
+				]]></getter>
+                <setter><![CDATA[
+					this.getElement("parent-textbox").setValue(val);
+					return val;
+				]]></setter>
+            </property>
+
+            <property name="parentNodeNumber" readonly="true">
+                <getter><![CDATA[
+					return this.getElement("parent-node-number-textbox");
+				]]></getter>
+            </property>
+
+            <property name="parentToolbar" readonly="true">
+                <getter><![CDATA[
+					return this.getElement("firepath-context-toolbar");
+				]]></getter>
+            </property>
+
+            <property name="highlightButton" readonly="true">
+                <getter><![CDATA[
+					return this.getElement("highlight-button");
+				]]></getter>
+            </property>
+
+            <property name="FirePathPanel" readonly="true">
+                <getter><![CDATA[
+					return Firebug.currentContext.getPanel(Firebug.FirePathPanel.prototype.name);
+				]]></getter>
+            </property>
+
+            <property name="selectorGenerator" readonly="true">
+                <getter><![CDATA[
+					// Sizzle is more CSS than XPath, so let it get grouped with css
+					return this.evaluationMode === 'xpath'?
+							FBL.getXPathFromNode: FBL.getCssSelectorFromNode;
+				]]></getter>
+            </property>
+
+            <!--******************************************************************************************************
+                Constructor
+            -->
+
+            <constructor><![CDATA[
+				this.initialize()
+			]]></constructor>
+
+            <!--******************************************************************************************************
+                State management method
+            -->
+
+            <method name="initialize">
+                <body><![CDATA[
+					if(Firebug) {
+						this.parentToolbar.collapsed = !Firebug.getPref(Firebug.prefDomain, "firepath.showParentToolbar");
+						this.setEvaluationMode();
+					}
+				]]></body>
+            </method>
+
+            <method name="init">
+                <parameter name="context"/>
+                <body><![CDATA[
+					this.NSResolver = this.createNSResolver(context.window.document);
+					this.selector = "";
+					this.locatorName = "";
+					this.filePath = "";
+					this.parentSelector = this.evalutationMode === 'xpath'? "/": "";
+					this.parentNodeNumber.collapsed = true;
+					this.parentNodes = null;
+					this.lastSelector = "";
+					this.lastLocatorName = "";
+					this.lastFilePath = "";
+					this.lastParent = null;
+					context.firePathBarInit = true;
+				]]></body>
+            </method>
+
+            <method name="show">
+                <parameter name="context"/>
+                <parameter name="show"/>
+                <body><![CDATA[
+					this.collapsed = !show;
+					if(show) {
+						this.currentContext = context; 
+						if(!context.firePathBarInit)
+							this.init(context);
+						else
+							this.restore(context);
+						var that = this
+						setTimeout(function() {
+							that.getElement("firepath-textbox").focus();
+						},10)
+					} else {
+						if(context == this.currentContext)
+							this.persiste(context);
+					}
+				]]></body>
+            </method>
+
+            <method name="persiste">
+                <parameter name="state"/>
+                <body><![CDATA[
+					if(!state.firePathBarState) state.firePathBarState = {};
+					this.copyState(this, state.firePathBarState);
+				]]></body>
+            </method>
+
+            <method name="restore">
+                <parameter name="state"/>
+                <body><![CDATA[
+					if(state.firePathBarState) {
+						this.copyState(state.firePathBarState, this)
+					}
+				]]></body>
+            </method>
+
+            <method name="copyState">
+                <parameter name="from"/>
+                <parameter name="to"/>
+                <body><![CDATA[
+					to.selector = from.selector;
+					to.parentSelector = from.parentSelector;
+					if(!to.parentNodeNumber) to.parentNodeNumber = {};
+					to.parentNodeNumber.value = from.parentNodeNumber.value;
+					to.parentNodeNumber.max = from.parentNodeNumber.max;
+					to.parentNodeNumber.collapsed = from.parentNodeNumber.collapsed;
+					to.parentNodes = from.parentNodes;
+					to.NSResolver = from.NSResolver;
+					to.lastSelector = from.lastSelector;
+					to.lastParent = from.lastParent;
+					to.lastLocatorName = from.lastLocatorName;
+					to.lastFilePath = from.lastFilePath;
+				]]></body>
+            </method>
+
+            <method name="saveLocator">
+                <body><![CDATA[
+                    // Check if fields are empty
+					if (!!this.locatorName && !!this.selector && !!this.filePath) {
+					    // File input / output / converter streams
+					    var fiStream = Components.classes["@mozilla.org/network/file-input-stream;1"].createInstance(Components.interfaces.nsIFileInputStream);
+						var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
+						var converter = Components.classes["@mozilla.org/intl/converter-output-stream;1"].createInstance(Components.interfaces.nsIConverterOutputStream);
+
+					    var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+
+						// Key/value of selected locator
+						var insertLine = this.locatorName + "=" + this.selector + "\r\n";
+
+						try {
+						    file.initWithPath(this.filePath);
+
+							/* Trying to read a file and find, if selected name already exists.
+							   Push results into array. Replace read line with insertLine, if exists.
+							   Otherwise, add a new pair to the end.
+							*/
+							var line = {}, lines = [], hasMore, isFound = false;
+
+                            // If file doesn't exist, just skip reading and add selected locator into lines buffer.
+							if (file.exists()) {
+                                fiStream.init(file, 0x01, 0444, 0);
+
+                                do {
+                                  hasMore = fiStream.readLine(line);
+
+                                  if (line.value.contains(this.locatorName)) {
+                                    lines.push(insertLine);
+                                    isFound = true;
+                                  } else {
+                                    lines.push(line.value + "\r\n");
+                                  }
+                                } while(hasMore);
+							}
+
+							if (!isFound) {
+							    lines.push(insertLine);
+							}
+
+                            // Truncate / create file and write buffer line by line
+                            foStream.init(file, 0x02 | 0x08 | 0x20, 0666, 0);
+                            converter.init(foStream, "UTF-8", 0, 0);
+
+                            var currentLine;
+                            for (currentLine of lines) {
+								converter.writeString(currentLine);
+							}
+						} catch(e){
+							alert(e);
+						} finally {
+						    if (fiStream) {
+							    fiStream.close();
+							}
+
+							if (foStream) {
+							    foStream.close();
+							}
+
+							if (converter) {
+							    converter.close();
+							}
+						}
+					} else {
+					    alert("Locator's name / value or PO path is empty!");
+					}
+				]]></body>
+            </method>
+
+            <!--******************************************************************************************************
+                Selector Evaluation methods
+            -->
+
+            <method name="evaluate">
+                <parameter name="reevaluate"/>
+                <body><![CDATA[
+					var selector = this.selector;
+					this.locatorName = "";
+
+					if(reevaluate)
+						selector = this.lastSelector;
+					
+					var context = this.getContextNode(reevaluate);
+					if(selector != "") {
+							
+						var contextTextbox = this.getElement("parent-textbox");
+						if(context) {
+							contextTextbox.setStatus();
+							if(this.evaluationMode === 'xpath' && FBL.trimLeft(this.selector).indexOf("/") == 0 && FBL.trimLeft(this.parentSelector) != "/") {
+								context = null;
+								contextTextbox.setStatus("warning", FBL.$STR_XP("unusedParentNode"));
+							}
+						}
+						
+						var result = this._evaluateExpression(this.selector, context);
+						this.lastSelector = this.selector;
+						this.lastParent = context;
+						this.FirePathPanel.setResult(context, result);
+					} else {
+						this.lastSelector = "";
+						this.FirePathPanel.setResult(context, null);
+					}
+				]]></body>
+            </method>
+
+            <method name="getXPathExpression">
+                <parameter name="xPath"/>
+                <body><![CDATA[
+					try {
+						if (xPath && FBL.isHtmlDocument(this.FirePathPanel.location.document)) {
+							// we want to lower case the XPath expression but not the literal inside.
+							//  eg: //DIV[@id='TEST'] should become //div[@id='TEST']
+							xPath = xPath.replace(/([^'"]*)('[^']+'|"[^"]+")?/g, 
+								function(str, expression, literal){return expression.toLowerCase() + literal;});
+						}
+						return this.xPathEvaluator.createExpression(xPath, this.NSResolver);
+					} catch (e) {
+						return null;
+					}
+				]]></body>
+            </method>
+
+            <method name="_evaluateExpression">
+                <parameter name="selector"/>
+                <parameter name="contextNode"/>
+                <parameter name="evaluateParent"/>
+                <body><![CDATA[
+						Firebug.FirePathPanel.ResultHighlightModule.clear(this.FirePathPanel.location.document);
+						try {
+							if (this.evaluationMode === 'xpath') {
+								var xPathExpression = this.getXPathExpression(selector);
+								if (!xPathExpression) return new Error("invalidSelectorError-"+this.evaluationMode);
+								return this.processResult(xPathExpression.evaluate(contextNode || this.FirePathPanel.location.document, XPathResult.ANY_TYPE, null));
+							} else {
+								var nodeList;
+								if (this.evaluationMode === 'sizzle') {
+									nodeList = this.evaluateWithSizzle(selector, contextNode, evaluateParent);
+								} else {
+									nodeList = (contextNode || this.FirePathPanel.location.document).querySelectorAll(selector);
+								}
+								var result = [];
+								for (var i = 0, l = nodeList.length; i < l; i++) {
+									var node = nodeList[i];
+									if (node.firebugIgnore ||
+											(node.ownerElement && node.ownerElement.firebugIgnore) ||
+											(node.parentNode && node.parentNode.firebugIgnore) ||
+											node.id == "_firebugConsole")
+										continue;
+									result.push(node);
+								}
+								return result;
+							}
+						} catch(ex) {
+							return new Error("invalidSelectorError-" + this.evaluationMode);
+						}
+					]]></body>
+            </method>
+
+            <method name="evaluateWithSizzle">
+                <parameter name="selector"/>
+                <parameter name="contextNode"/>
+                <parameter name="evaluateParent"/>
+                <body><![CDATA[
+					var win = this.FirePathPanel.location,
+					doc = win.document;
+					var firePathSizzle = win.firePathSizzle;
+					if (!firePathSizzle) {
+						// Inject Sizzle.js into the page.
+
+						// Store target window's original Sizzle, if any
+						var originalSizzle = win.wrappedJSObject.Sizzle; 							
+						var scriptSource = FBL.getResource("chrome://firepath/content/sizzle.js");
+						var addedElement = FBL.addScript(doc, "firePathSizzle", scriptSource);
+
+						// Store the newly created Sizzle on the wrapper
+						win.firePathSizzle = win.wrappedJSObject.Sizzle;
+
+						// Restore the original target's Sizzle, if any
+						if (originalSizzle) {
+							win.wrappedJSObject.Sizzle = originalSizzle;
+						} else {
+							delete win.wrappedJSObject.Sizzle;
+						}
+
+						// take the script tag back out now that the script is loaded
+						addedElement.parentNode.removeChild(addedElement); 
+
+						firePathSizzle = win.firePathSizzle;
+					}
+					if (evaluateParent) {
+						win.firePathContext = firePathSizzle(selector);
+						return win.firePathContext;
+					} else if(contextNode) {
+						return firePathSizzle(selector,
+							win.firePathContext[this.parentNodeNumber.value - 1]);
+					} else {
+						return firePathSizzle(selector);
+					}
+				]]></body>
+            </method>
+
+            <method name="createNSResolver">
+                <parameter name="doc"/>
+                <body><![CDATA[
+					var prefixToNS = this.getMappingPrefixNS(doc);
+					return function(prefix) {
+						return prefixToNS[prefix] || null;
+					}
+				]]></body>
+            </method>
+
+            <method name="getMappingPrefixNS">
+                <parameter name="doc"/>
+                <body><![CDATA[
+					var result = doc.evaluate("//*[namespace-uri() != '']", doc, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
+					var nsToPrefix = {};
+					var prefixToNS = {};
+					for ( var i=0, L=result.snapshotLength ; i < L; i++ ) {
+						var node = result.snapshotItem(i);
+						var ns = node.namespaceURI;
+						if(ns) {
+							var prefix = node.lookupPrefix(ns);
+							if(!prefix) {
+								if(!(ns in nsToPrefix)) {
+									nsToPrefix[ns] = FBL.getPrefixFromNS(ns);
+								}
+								prefix = nsToPrefix[ns];
+							}
+							if(!(prefix in prefixToNS))
+								prefixToNS[prefix] = ns;
+						}
+					}
+					return prefixToNS;
+				]]></body>
+            </method>
+
+            <method name="getContextNode" readonly="true">
+                <parameter name="reevaluate"/>
+                <body><![CDATA[
+					if(this.parentToolbar.collapsed)
+						return null;
+					if(!reevaluate && this.parentNodes && this.lastParentSelector == this.parentSelector)
+						return this.parentNodes[this.parentNodeNumber.value - 1];
+					else {
+						var nodes = this._evaluateExpression(this.parentSelector, null, true);
+						
+						this.lastParentSelector = this.parentSelector;
+						
+						if(FBL.isArray(nodes) && nodes.length > 0) {
+							if(!reevaluate) {
+								this.parentNodeNumber.collapsed = (nodes.length == 1);
+								this.parentNodeNumber.max = nodes.length;
+								this.parentNodeNumber.value = 1;
+								this.parentNodes = nodes;
+								this.getElement("parent-textbox").setStatus();
+								return nodes[0];
+							} else {
+								this.parentNodes = nodes;
+								return nodes[this.parentNodeNumber.value - 1];
+							}
+						} else {
+							this.parentNodeNumber.collapsed = true;
+							this.parentNodeNumber.value = 1;
+							this.parentNodes = [null];
+							if(!(nodes instanceof Error))
+								this.getElement("parent-textbox").setStatus("warning", FBL.$STR_XP("noParentNodeSelected"));
+							return null;
+						}
+					}
+				]]></body>
+            </method>
+
+            <!--******************************************************************************************************
+                methods to manage the mode
+            -->
+
+            <method name="changeMode">
+                <parameter name="event"/>
+                <body><![CDATA[
+					if(event.target == this.getElement("mode-selector-button"))
+						this.getElement("firepath-textbox").focus();
+					this.setEvaluationMode(event.target.getAttribute("mode"));
+					this.getElement("firepath-textbox").checkSyntax();
+					this.reset(),
+					this.evaluate();
+				]]></body>
+            </method>
+
+            <method name="setEvaluationMode">
+                <parameter name="mode"/>
+                <body><![CDATA[
+					var evaluationMode;
+					if(!mode)
+						evaluationMode = Firebug.getPref(Firebug.prefDomain, "firepath.evaluationMode");
+					else
+						evaluationMode = mode;
+
+					var button = this.getElement("mode-selector-button");
+					this.evaluationMode = evaluationMode;
+					var menuitem = document.getAnonymousElementByAttribute(button, "mode", evaluationMode);
+					button.label = menuitem.label;
+					
+					Firebug.setPref(Firebug.prefDomain, "firepath.evaluationMode", evaluationMode);
+				]]></body>
+            </method>
+
+            <!--******************************************************************************************************
+                public methods, used by the panel
+            -->
+
+            <method name="setNode">
+                <parameter name="node"/>
+                <parameter name="noEval"/>
+                <body><![CDATA[
+					this.selector = this.selectorGenerator(node, this.getContextNode());
+					if(!noEval) {
+						this.evaluate();
+					}
+				]]></body>
+            </method>
+
+            <method name="setContextNode">
+                <parameter name="node"/>
+                <body><![CDATA[
+					this.parentSelector = this.selectorGenerator(node);
+					this.evaluate();
+				]]></body>
+            </method>
+
+            <method name="updateLocation">
+                <parameter name="location"/>
+                <body><![CDATA[
+					this.NSResolver = this.createNSResolver(location.document);
+					this.reset();
+				]]></body>
+            </method>
+
+            <method name="reset">
+                <body><![CDATA[
+					delete this.lastSelector;
+					delete this.lastParent;
+					delete this.lastParentSelector;
+					delete this.lastLocatorName;
+				]]></body>
+            </method>
+
+            <method name="showParentToolbar">
+                <parameter name="show"/>
+                <body><![CDATA[
+					this.parentToolbar.collapsed = !show;
+					this.reset();
+				]]></body>
+            </method>
+
+            <!--******************************************************************************************************
+                public methods, used by the xpath autoCompleter
+            -->
+
+            <method name="hasResult">
+                <parameter name="xPath"/>
+                <body><![CDATA[
+					var xPathExpression = this.getXPathExpression(xPath);
+					if(!xPathExpression) return false;
+					
+					var result;
+					try{
+						result = xPathExpression.evaluate(this.getContextNode() || this.FirePathPanel.location.document, XPathResult.ANY_UNORDERED_NODE_TYPE, null);
+					} catch(e) {
+						return false;
+					}
+					return result.singleNodeValue != null;
+				]]></body>
+            </method>
+
+            <method name="evaluateExpression">
+                <parameter name="xPath"/>
+                <body><![CDATA[
+					var xPathExpression = this.getXPathExpression(xPath);
+					if(!xPathExpression) return null;
+					
+					var result;
+					try{
+						result = xPathExpression.evaluate(this.getContextNode() || this.FirePathPanel.location.document, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null);
+					} catch(e) {
+						return null;
+					}
+					return this.processResult(result);
+				]]></body>
+            </method>
+
+            <!--******************************************************************************************************
+                Helper Methods
+            -->
+
+            <method name="getElement">
+                <parameter name="aAnonymousID"/>
+                <body><![CDATA[
+					return document.getAnonymousElementByAttribute(this, "anonid", aAnonymousID);
+				]]></body>
+            </method>
+
+            <method name="isValidSelector">
+                <parameter name="value"/>
+                <body><![CDATA[
+					if (this.evaluationMode === "xpath") {
+						return this.getXPathExpression(value) != null;
+					} else {
+						try {
+							if (this.evaluationMode === "sizzle") {
+								this.evaluateWithSizzle(value);
+							} else {
+								this.FirePathPanel.location.document.querySelector(value);
+							}
+						} catch (e) {
+							return false;
+						}
+						return true
+					}
+				]]></body>
+            </method>
+
+            <method name="processResult">
+                <parameter name="evaluationResult"/>
+                <body><![CDATA[
+				switch(evaluationResult.resultType) {
+					case XPathResult.NUMBER_TYPE:
+						return evaluationResult.numberValue;
+					case XPathResult.STRING_TYPE:
+						return evaluationResult.stringValue;
+					case XPathResult.BOOLEAN_TYPE:
+						return evaluationResult.booleanValue;
+					default:
+						var result = [];
+						var node;
+						while (node = evaluationResult.iterateNext()) {
+							//make sure it is not a node created by firebug
+							if(node.firebugIgnore ||
+								(node.ownerElement && node.ownerElement.firebugIgnore) ||
+								(node.parentNode && node.parentNode.firebugIgnore) ||
+								node.id == "_firebugConsole")
+									continue; 
+							result.push(node);
+						}
+						return result;
+				}
+				]]></body>
+            </method>
+        </implementation>
+    </binding>
+
+    <binding id="FirePathStatusBar" extends="xul:hbox">
+        <content>
+            <xul:statusbarpanel flex="1" align="center" pack="left">
+                <xul:image anonid="firepath-result-icon" class="firepath-result-icon"/>
+                <xul:label anonid="firepath-result-info" value=""/>
+            </xul:statusbarpanel>
+            <xul:statusbarpanel anonid="firepath-result-progressmeter-container" collapsed="true">
+                <xul:image src="chrome://firebug/skin/errorIcon.png"
+                           onmousedown="document.getBindingParent(this).cancelLoading(Firebug.currentContext)"
+                           class="firepath-cancel-result-loading-button"/>
+                <xul:progressmeter anonid="firepath-result-progressmeter"/>
+            </xul:statusbarpanel>
+        </content>
+        <implementation>
+
+            <!--******************************************************************************************************
+                fields and properties
+            -->
+
+            <property name="progressMeter" readonly="true">
+                <getter><![CDATA[
+					return this.getElement("firepath-result-progressmeter");
+				]]></getter>
+            </property>
+
+            <property name="progressMeterContainer" readonly="true">
+                <getter><![CDATA[
+					return this.getElement("firepath-result-progressmeter-container");
+				]]></getter>
+            </property>
+
+            <property name="resultInfo">
+                <getter><![CDATA[
+					return this.getElement("firepath-result-info").value;
+				]]></getter>
+                <setter><![CDATA[
+					this.getElement("firepath-result-info").value = val;
+					return val;
+				]]></setter>
+            </property>
+
+            <property name="resultIcon">
+                <getter><![CDATA[
+					return this.getElement("firepath-result-icon").getAttribute("status");
+				]]></getter>
+                <setter><![CDATA[
+					this.getElement("firepath-result-icon").setAttribute("status", val);
+					return val;
+				]]></setter>
+            </property>
+
+            <!--******************************************************************************************************
+                ProgressMeter management
+            -->
+
+            <method name="startLoading">
+                <parameter name="context"/>
+                <parameter name="stepNumber"/>
+                <body><![CDATA[
+					context.FirePathStatusBar.loading = true;
+					context.FirePathStatusBar.stepNumber = stepNumber;
+					context.FirePathStatusBar.currentStep = 0;
+					this.progressMeter.value = 0;
+					this.progressMeterContainer.collapsed = false;
+				]]></body>
+            </method>
+
+            <method name="increaseLoading">
+                <parameter name="context"/>
+                <body><![CDATA[
+					context.FirePathStatusBar.currentStep += 1;
+					if(context.FirePathStatusBar.shown)
+						this.progressMeter.value = context.FirePathStatusBar.currentStep / context.FirePathStatusBar.stepNumber * 100;
+				]]></body>
+            </method>
+
+            <method name="stopLoading">
+                <parameter name="context"/>
+                <body><![CDATA[
+					delete context.FirePathStatusBar.loading;
+					this.progressMeterContainer.collapsed = true;
+				]]></body>
+            </method>
+
+            <method name="cancelLoading">
+                <parameter name="context"/>
+                <body><![CDATA[
+					var panel = context.getPanel(Firebug.FirePathPanel.prototype.name);
+					panel.stopLoading();
+					panel.firePathBar.reset();
+					this.resultInfo = this.resultInfo + " (" + FBL.$STR_XP("nodeSelectedMessage", context.FirePathStatusBar.currentStep) + ")";
+					context.FirePathStatusBar.resultInfo = this.resultInfo;
+				]]></body>
+            </method>
+
+
+            <!--******************************************************************************************************
+                Result info management
+            -->
+
+            <method name="setResultInfo">
+                <parameter name="context"/>
+                <parameter name="status"/>
+                <parameter name="info"/>
+                <body><![CDATA[
+					context.FirePathStatusBar.resultInfo = info;
+					this.resultInfo = info;
+					context.FirePathStatusBar.resultIcon = status;
+					this.resultIcon = status;
+				]]></body>
+            </method>
+
+            <method name="clearResultInfo">
+                <parameter name="context"/>
+                <body><![CDATA[
+					delete context.FirePathStatusBar.resultInfo;
+					this.resultInfo = "";
+					delete context.FirePathStatusBar.resultIcon;
+					this.resultIcon = "";
+				]]></body>
+            </method>
+
+            <!--******************************************************************************************************
+                other public methods
+            -->
+
+            <method name="show">
+                <parameter name="context"/>
+                <parameter name="show"/>
+                <body><![CDATA[
+					if(!context.FirePathStatusBar)
+						context.FirePathStatusBar = {};
+					if(show) {
+						this.resultInfo = context.FirePathStatusBar.resultInfo || "";
+						this.resultIcon = context.FirePathStatusBar.resultIcon || "";
+						this.progressMeterContainer.collapsed = !context.FirePathStatusBar.loading;
+					}
+					context.FirePathStatusBar.shown = show;
+					this.collapsed = !show;
+				]]></body>
+            </method>
+
+            <method name="reset">
+                <parameter name="context"/>
+                <body><![CDATA[
+					this.clearResultInfo(context);
+				]]></body>
+            </method>
+
+            <!--******************************************************************************************************
+                Helper Methods
+            -->
+
+            <method name="getElement">
+                <parameter name="aAnonymousID"/>
+                <body><![CDATA[
+					return document.getAnonymousElementByAttribute(this, "anonid", aAnonymousID);
+				]]></body>
+            </method>
+
+        </implementation>
+    </binding>
+</bindings>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://firepath/locale/FirePath.dtd">
+<?xml-stylesheet href="chrome://firepath/skin/FirePath.css" type="text/css"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script src="chrome://firepath/content/FirePathPanel.js" type="application/javascript"/>
+	
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="Firepath_strings" src="chrome://firepath/locale/FirePath.properties"/>
+	</stringbundleset>
+	
+	<hbox id="fbToolbarInner">
+		<toolbarbutton id="FirePathBarHighlightButton" collapsed="true" label="&FirePath.highlight.button;" class="toolbar-text-button"
+			oncommand="Firebug.FirePathPanel.ResultHighlightModule.toggleHighlight();"
+			checked="false" disabled="true" insertafter="fbLocationList"/>
+		<firepathbar id="FirePathBar" flex="1"  collapsed="true" insertafter="fbLocationList"/>
+	</hbox>
+	
+	<vbox id="fbContentBox">
+		<firepathstatusbar id="FirePathStatusBar" insertafter="fbCommandBox" collapsed="true"/>
+	</vbox>
+
+</overlay>
