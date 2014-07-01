@@ -7,6 +7,8 @@ Main usage: saving key/value pairs - name=locator - by a given path.
 
 You can find detailed instruction in the following [article](http://qa-automation-notes.blogspot.com/2014/07/firepath-upgrade-saving-locators-in.html).
 
+Also please have a look to related discussion here http://automated-testing.info/t/firepath-update-js-xul-kak-sohranyat-lokatory-vmeste-s-imenami-po-ukazannomu-puti/4744
+
 Inside of project you will see: 
  
  - Common FirePath extension sources downloaded from [SVN repository](https://code.google.com/p/firepath/source/checkout)
