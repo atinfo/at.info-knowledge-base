@@ -1,0 +1,82 @@
+/*
+ * Copyright (C) 2009 - 2010 Pierre Tholence
+ *
+ * This file is part of FirePath
+ *
+ * FirePath is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * FirePath is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with FirePath.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+firepathbar {
+	-moz-binding: url("chrome://firepath/content/bindings.xml#FirePathBar");
+}
+
+firepathstatusbar {
+	-moz-binding: url("chrome://firepath/content/bindings.xml#FirePathStatusBar");
+	-moz-appearance: statusbar;
+	min-height:24px;
+}
+
+/**** FirePathBar *****/
+.firepath-textbox {
+	-moz-binding: url("chrome://firepath/content/bindings.xml#FirePath-textbox");
+	-moz-appearance: none;
+	border: none;
+	margin: 0;
+}
+
+.firepath-textbox-no-validation {
+	-moz-binding: url("chrome://firepath/content/bindings.xml#FirePath-textbox");
+	-moz-appearance: none;
+	border: none;
+	margin: 0;
+}
+
+.firepath-textbox[status = "error"] {
+	background-color: #FF6666;
+	color: #FFFFFF;
+}
+
+.firepath-textbox[status = "warning"] {
+	background-color: yellow;
+}
+
+.firepath-field-container {
+	-moz-appearance: textfield;
+}
+
+/**** FirePathStatusBar *****/
+.firepath-result-icon[status = "error"] {
+	list-style-image: url("chrome://firebug/skin/errorIcon.png");
+}
+
+.firepath-result-icon[status = "warning"] {
+	list-style-image: url("chrome://firebug/skin/warningIcon.png");
+}
+
+.firepath-result-icon[status = "ok"] {
+	list-style-image: url("chrome://firebug/skin/okIcon-sm.png");
+}
+
+.firepath-cancel-result-loading-button {
+	height:20px;
+	width:20px;
+	padding:2px;
+	cursor:pointer;
+	border:1px solid transparent;
+	-moz-border-radius : 3px;
+}
+
+.cancel-loading-button:hover {
+	border-color: Gray;
+}

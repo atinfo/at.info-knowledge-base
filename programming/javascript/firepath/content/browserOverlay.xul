@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://firepath/locale/FirePath.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<popup id="contentAreaContextMenu">
+		<menuitem id="menu_fpShow" label="&FirePath.context.show.label;"
+			insertafter="context-inspect"
+			oncommand="var node = document.popupNode;Firebug.browserOverlay.startFirebug(function(){Firebug.toggleBar(true); Firebug.chrome.selectPanel('firepath').updateSelection(node);})"
+			accesskey="&FirePath.context.show.key;"/>
+	</popup>
+
+</overlay>

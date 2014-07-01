@@ -1,0 +1,15 @@
+<!ENTITY FirePath.context.show.label "Inspect in FirePath">
+<!ENTITY FirePath.context.show.key "F">
+<!ENTITY FirePath.xPath.label "XPath: ">
+<!ENTITY FirePath.xPath.key "x">
+<!ENTITY FirePath.context.label "Parent: ">
+<!ENTITY FirePath.context.key "t">
+<!ENTITY FirePath.highlight.button "Highlight">
+<!ENTITY FirePath.eval.button "Eval">
+<!ENTITY FirePath.CSS.label "CSS: ">
+<!ENTITY FirePath.CSS.key "c">
+<!ENTITY FirePath.Sizzle.label "Sizzle: ">
+<!ENTITY FirePath.Sizzle.key "s">
+<!ENTITY FirePath.context.label.locator "Locator name: ">
+<!ENTITY FirePath.context.label.pageobject "File path: ">
+<!ENTITY FirePath.context.label.save.button "Save locator">
