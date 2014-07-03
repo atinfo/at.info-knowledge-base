@@ -17,7 +17,7 @@ public class BaseTest {
 
     public WebDriver driver;
     public ProxyServer server;
-    public String proxyIp = "172.31.29.21";
+    public String proxyIp = "192.168.0.103";
     public int port = 8085;
     public String url = "http://automated-testing.info/";
 
