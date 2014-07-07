@@ -11,8 +11,6 @@ for WebDriver and RemoteWebDriver
 As an example in this article is used BrowserMobProxy which is started by locally. All traffic passed via this local proxy. 
 
 
-If it need to set remote proxy, just change IP and port in method `getProxy()`
-
 * Set proxy for Chrome via RemoteWebDriver 
 ```java
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -27,3 +25,5 @@ If it need to set remote proxy, just change IP and port in method `getProxy()`
 ```
 
 
+If it need to use remote proxy, should be implemented appropriate REST client.
+This example applied only for local proxy. BrowserMob proxy lib that is started locally.
