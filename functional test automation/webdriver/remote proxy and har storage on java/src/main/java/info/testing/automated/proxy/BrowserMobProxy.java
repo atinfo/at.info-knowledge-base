@@ -14,6 +14,11 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
+/**
+ * Author: Serhii Kuts
+ * Date: 8/31/2014
+ * Time: 4:08 PM
+ */
 public class BrowserMobProxy {
 
     private WebTarget service;
