@@ -4,7 +4,7 @@ Java BrowserMob proxy with HAR storage example: how to use remote proxy and save
 Implemented via maven, jersey, testng.
 
 Main usage: capturing network traffic, performance analysis, server / JS error investigation.
-You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2014/09/monitoring-network-activity-via.html
+You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2014/09/monitoring-network-activity-via.html and related discussions here http://automated-testing.info/t/ispolzovanie-remote-browsermob-proxy-har-storage/5009
 
 Inside of project you will see: 
  
