@@ -30,10 +30,9 @@ public class TestRunner {
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection data() throws ClassNotFoundException {
-        System.setProperty("tags", "tag1");
         String tagsParam = System.getProperty("tags");
         List<Object[]> data = new ArrayList<>();
-        List<Method> methods = new ArrayList<>();
+        Set<Method> methods = new HashSet<>();
         if (tagsParam == null) return data;
         for (String tag : tagsParam.split(",\\s")) {
             methods.addAll(getMethodsForTag(tag));
