@@ -29,6 +29,9 @@ REST API for killing hub / nodes looks like the following:
                 .queryParam("cmd", "shutDownSeleniumServer")
                 .request(MediaType.APPLICATION_JSON)
                 .post(null).getStatus() == Response.Status.OK.getStatusCode();
-
     }		
 ```
+
+Jenkins plugin will look like the following:
+
+![plugin layout](http://1.bp.blogspot.com/-lkxZZVd0hEI/VCRoWuiYkfI/AAAAAAAAAZU/jwxnf8dOyn8/s1600/plugin%2Bconfig.png)
