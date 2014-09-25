@@ -1,0 +1,15 @@
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+    <f:block>
+        <table>
+            <f:entry title="Hub IP" field="hubIp">
+                <f:textbox/>
+            </f:entry>
+            <f:entry title="Hub port" field="hubPort">
+                <f:textbox/>
+            </f:entry>
+            <f:entry title="Nodes configuration" field="nodeConfigurations">
+                <f:repeatableProperty field="nodeConfigurations" minimum="1" noAddButton="true"/>
+            </f:entry>
+        </table>
+    </f:block>
+</j:jelly>
