@@ -4,7 +4,8 @@ Jenkins plugin example: how to shutdown Selenium Grid hub / nodes
 Implemented via maven, jersey.
 
 Main usage: releasing hub / nodes to minimize possible Selenium Grid stucking.
-You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2014/09/jenkins-plugin-for-killing-selenium-grid.html
+You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2014/09/jenkins-plugin-for-killing-selenium-grid.html 
+http://automated-testing.info/t/code-recipe-uchimsya-sozdavat-jenkins-plaginy-na-primere-selenium-grid-killera/5108
 
 Inside of project you will see: 
  
