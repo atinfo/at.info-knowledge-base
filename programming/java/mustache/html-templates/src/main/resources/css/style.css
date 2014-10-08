@@ -1,0 +1,36 @@
+*                        {padding: 0; margin: 0;}
+a                        {color: #006699;}
+a:visited                {color: #003366;}
+body                     {font-family: Lucida Sans Unicode, Lucida Grande, sans-serif; line-height: 1.8em; font-size: 62.5%; margin: 1.8em 1em; background-color: #FFFFFF;}
+h1                       {font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 2.7em; margin-bottom: 0.6667em;}
+td                       {font-size: 1.3em;}
+
+.header                  {font-size: 1.4em; font-weight: bold; text-align: left;}
+.passed                  {background-color: #BAEDD4;}
+.skipped                 {background-color: #F7E4AF;}
+.failed                  {background-color: #FFB4A8;}
+
+.suite                   {background-color: #3380CB; font-weight: bold; color: #FFFFFF;}
+.test                    {background-color: #F0F8FF; padding-left: 2em;}
+.testSet                 {background-color: #F0F8FF; padding-left: 2em; font-weight: bold;}
+.test .passed            {background-color: #BAEDD4;}
+.test .skipped           {background-color: #F7E4AF;}
+.test .failed            {background-color: #FFB4A8;}
+.passRate                {font-weight: bold; text-align: right;}
+.duration                {text-align: center;}
+
+.number                  {text-align: center;}
+.zero                    {font-weight: normal;}
+.columnHeadings         {font-size: 1.25em;}
+
+.header.suite            {cursor: pointer; clear: right; height: 1.214em; margin-top: 1px;}
+div.test                 {margin-top: 0.1em; clear: right; font-size: 1.3em;}
+
+.overviewTable           {width: 100%; margin-top: 1.8em; line-height: 1.7em; border-spacing: 0.1em;}
+.overviewTable td        {padding: 0 1em;}
+.overviewTable th        {padding: 0 .5em;}
+.overviewTable .duration {width: 6em;}
+.overviewTable .date     {width: 14em;}
+.overviewTable .passRate {width: 6em; text-align: center; }
+.overviewTable .number   {width: 5em;}
+.overviewTable tr        {height: 1.6em;}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{reportTitle}}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <h1>{{reportTitle}}</h1>
+
+    <div align="left">
+        <table>
+            <tr class="testSet">
+                <td>{{#translate}}executionDateTime{{/translate}}:</td>
+                <td>{{reportDate}}</td>
+            </tr>
+        </table>
+    </div>
+
+    {{#suites}}
+        <table class="overviewTable" width="100%">
+            <tr>
+                <th colspan="8" class="header suite">
+                    {{name}} {{#translate}}testGroupSectionTitle{{/translate}}:
+                </th>
+            </tr>
+            {{#testResults}}
+                <tr class="columnHeadings">
+                    <th width="24%">{{#translate}}testGroupHeader{{/translate}}</th>
+                    <th width="18%">{{#translate}}startTimeHeader{{/translate}}</th>
+                    <th width="18%">{{#translate}}endTimeHeader{{/translate}}</th>
+                    <th width="8%">{{#translate}}executionTimeHeader{{/translate}}</th>
+                    <th width="8%">{{#translate}}passedTestsHeader{{/translate}}</th>
+                    <th width="8%">{{#translate}}skippedTestsHeader{{/translate}}</th>
+                    <th width="8%">{{#translate}}failedTestsHeader{{/translate}}</th>
+                    <th width="8%">{{#translate}}passRateHeader{{/translate}}</th>
+                </tr>
+                <tr class="test" align="center">
+                    <td class="test" align="center"><a href="#">{{name}}</a></td>
+                    <td class="date" align="center">{{startDate}}</td>
+                    <td class="date" align="center">{{endDate}}</td>
+                    <td class="duration" align="center">{{duration}}s</td>
+                    <td class="{{highlightPassed}} number" align="center">{{passed}}</td>
+                    <td class="{{highlightSkipped}} number" align="center">{{skipped}}</td>
+                    <td class="{{highlightFailed}} number" align="center">{{failed}}</td>
+                    <td class="passRate" align="center">{{passRate}}%</td>
+                </tr>
+                <tr></tr>
+            {{/testResults}}
+        </table>
+    {{/suites}}
+</body>
+</html>
