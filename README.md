@@ -30,6 +30,7 @@ Timeline on added examples
 Also you can see it on http://atinfo.github.io/at.info-knowledge-base/
 
 <ul>
+            <li> <label>java</label> <label>Mustache</label> <label>testng</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/programming/java/mustache/html-templates" target="_blank">How to create custom reports based on TestNG results with Mustache template engine.</a> </li>
             <li> <label>java</label> <label>jenkins</label> <label>webdriver</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/webdriver/selenium-utils-jenkins-plugin" target="_blank">How to shutdown Selenium Grid hub / nodes on Jenkins plugin</a> </li>
             <li> <label>java</label> <label>junit</label> <label>maven</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/programming/java/junit/run_methods_by_tag" target="_blank">How to run the only test methods, which has a special tag from java junit</a> </li>
             <li> <label>mailcatcher</label> <label>java</label> <label>rest</label> <a href="https://github.com/atinfo/at.info-knowledge-base/tree/master/functional%20test%20automation/webdriver/mailcatcher%20rest%20client%20on%20java" target="_blank">How to use MailCatcher REST API for emails testing</a> </li>
