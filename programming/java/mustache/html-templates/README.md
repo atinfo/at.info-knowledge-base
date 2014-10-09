@@ -4,7 +4,7 @@ Mustache template engine example: how to create custom reports based on TestNG r
 Implemented via Maven, TestNG, Mustache.java.
 
 Main usage: creating custom test results reports, email templates, etc.
-You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2014/10/custom-reporting-engine-with-mustache.html
+You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2014/10/custom-reporting-engine-with-mustache.html and http://automated-testing.info/t/mustache-template-engine-ili-kak-sozdavat-kastomnye-reporty-part-2/5178
 
 Inside of project you will see: 
  
