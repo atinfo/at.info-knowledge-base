@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DP test suite" parallel="tests" thread-count="3">
+    <test name="DP - 1">
+        <classes>
+            <class name="info.testing.automated.tests.DataProviderTests">
+                <methods>
+                    <include name="getFirstSampleData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="DP - 2">
+        <classes>
+            <class name="info.testing.automated.tests.DataProviderTests">
+                <methods>
+                    <include name="getSecondSampleData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="DP - 3">
+        <classes>
+            <class name="info.testing.automated.tests.DataProviderTests">
+                <methods>
+                    <include name="getThirdSampleData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/PRODUCTION</property>
+        <property name="connection.username">sskuts</property>
+        <property name="connection.password">password</property>
+
+        <!-- configuration pool via c3p0-->
+        <property name="c3p0.acquire_increment">1</property>
+        <property name="c3p0.idle_test_period">300</property>
+        <!-- seconds -->
+        <property name="c3p0.max_size">100</property>
+        <property name="c3p0.max_statements">50</property>
+        <property name="c3p0.min_size">1</property>
+        <property name="c3p0.timeout">300</property>
+
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+        <property name="hibernate.cache.use_query_cache">false</property>
+
+        <!-- Change these values to true to echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+        <property name="use_sql_comments">false</property>
+
+        <property name="temp.use_jdbc_metadata_defaults">false</property>
+
+        <!-- This is the entity class that we'll be testing. -->
+
+        <mapping class="info.testing.automated.core.model.ProdUsers"/>
+        <mapping class="info.testing.automated.core.model.Products"/>
+
+    </session-factory>
+</hibernate-configuration>
