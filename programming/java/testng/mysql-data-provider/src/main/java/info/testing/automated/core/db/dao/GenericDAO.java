@@ -62,6 +62,7 @@ public class GenericDAO<T extends BaseEntity, ID extends Serializable> implement
             if (session != null) {
                 object = (T) session.get(entity, id);
             }
+            // Ignore it, if you're not going to use select for update or select across db links
             commitTransaction();
         } catch (HibernateException e) {
             rollbackTransaction();
@@ -80,6 +81,7 @@ public class GenericDAO<T extends BaseEntity, ID extends Serializable> implement
             if (session != null) {
                 objects = (List<T>) session.createQuery(String.format("from %s", entity.getSimpleName())).list();
             }
+            // Ignore it, if you're not going to use select for update or select across db links
             commitTransaction();
         } catch (HibernateException e) {
             rollbackTransaction();
