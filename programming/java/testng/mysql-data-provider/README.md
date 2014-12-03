@@ -6,6 +6,7 @@ Implemented via maven, testng, hibernate.
 Main usage: DDT.
 
 You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2014/11/ddt-generic-dataprovider-for-handling.html
+and discussions here http://automated-testing.info/t/generic-dataprovider-ili-kak-rabotat-s-db-sushhnostyami-v-usloviyah-masshtabirovaniya/5466
 
 Inside of project you will see:
 
