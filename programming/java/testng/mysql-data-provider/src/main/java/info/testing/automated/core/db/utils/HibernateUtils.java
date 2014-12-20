@@ -14,9 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Author: Serhii Kuts
- * Date: 12/11/13
- * Time: 11:33 PM
+ * Author: Sergey Kuts
  */
 
 public final class HibernateUtils {

@@ -44,4 +44,19 @@ public class DataProviderTests {
     public void getThirdSampleData(final ImportData importData) {
         System.out.println(Thread.currentThread().getId() + " thread:\n" + importData + "\n");
     }
+
+    @Entity(entity = Users.class, schema = AUTOMATION, ids = {1})
+    @Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+    public void saveFirstSampleData(final Users user) throws InterruptedException {
+        user.setEmail("test.user1@email.com");
+        user.setPassword("password1");
+        user.save();
+    }
+
+    @Entity(entity = Users.class, schema = AUTOMATION, ids = {1})
+    @Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+    public void saveSecondSampleData(final Users user) {
+        user.setEmail("test.user3@email.com");
+        user.save();
+    }
 }
