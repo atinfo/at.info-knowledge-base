@@ -47,7 +47,7 @@ public class DataProviderTests {
 
     @Entity(entity = Users.class, schema = AUTOMATION, ids = {1})
     @Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
-    public void saveFirstSampleData(final Users user) throws InterruptedException {
+    public void saveFirstSampleData(final Users user) {
         user.setEmail("test.user1@email.com");
         user.setPassword("password1");
         user.save();
