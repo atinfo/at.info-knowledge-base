@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="DP test suite" parallel="tests" thread-count="3">
+<suite name="DP test suite" parallel="tests" thread-count="5">
     <test name="DP - 1">
         <classes>
             <class name="info.testing.automated.tests.DataProviderTests">
@@ -26,6 +26,26 @@
             <class name="info.testing.automated.tests.DataProviderTests">
                 <methods>
                     <include name="getThirdSampleData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="DP - 4">
+        <classes>
+            <class name="info.testing.automated.tests.DataProviderTests">
+                <methods>
+                    <include name="saveFirstSampleData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="DP - 5">
+        <classes>
+            <class name="info.testing.automated.tests.DataProviderTests">
+                <methods>
+                    <include name="saveSecondSampleData"/>
                 </methods>
             </class>
         </classes>

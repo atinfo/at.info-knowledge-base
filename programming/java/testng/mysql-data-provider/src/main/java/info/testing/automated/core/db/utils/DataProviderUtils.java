@@ -2,6 +2,7 @@ package info.testing.automated.core.db.utils;
 
 import info.testing.automated.core.annotations.Entity;
 import info.testing.automated.core.db.dao.DAO;
+import info.testing.automated.core.db.entities.BaseEntity;
 import info.testing.automated.core.db.entities.DataSet;
 import info.testing.automated.core.db.dao.GenericDAO;
 import org.testng.annotations.DataProvider;
@@ -11,9 +12,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 /**
- * Author: Serhii Kuts
- * Date: 1/8/14
- * Time: 11:54 PM
+ * Author: Sergey Kuts
  */
 public final class DataProviderUtils {
 
@@ -36,7 +35,7 @@ public final class DataProviderUtils {
 
         for (Entity entity : testMethod.getAnnotationsByType(Entity.class)) {
             final DAO entityDAO = new GenericDAO<>(entity.entity(), entity.schema());
-            final List<Object> retrievedFields = new ArrayList<>();
+            final List<BaseEntity> retrievedFields = new ArrayList<>();
 
             int minInvocationCount = entity.ids().length;
 
@@ -49,7 +48,7 @@ public final class DataProviderUtils {
                 minInvocationCount = retrievedFields.size();
             }
 
-            dataSets.add(new DataSet(retrievedFields));
+            dataSets.add(new DataSet(retrievedFields).updateFieldsWith(entityDAO));
 
             final int currentDataSize = outputDataSize;
             outputDataSize = Optional.of(IntStream.of(entity.invocationCount(), minInvocationCount)

@@ -1,6 +1,7 @@
 package info.testing.automated.core.model;
 
 import info.testing.automated.core.db.entities.BaseEntity;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 /**
  * Author: Sergey Kuts
  */
+@DynamicUpdate
 @Entity
 @Table(name = "USERS")
 public class ProdUsers extends BaseEntity {

@@ -3,16 +3,13 @@ package info.testing.automated.core.db.dao;
 import info.testing.automated.core.db.entities.BaseEntity;
 import info.testing.automated.core.db.utils.HibernateUtils;
 import info.testing.automated.core.enums.Schema;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
+import org.hibernate.*;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * Author: Serhii Kuts
- * Date: 12/12/13
- * Time: 12:21 AM
+ * Author: Sergey Kuts
  */
 public class GenericDAO<T extends BaseEntity, ID extends Serializable> implements DAO<T, ID> {
 
@@ -62,7 +59,6 @@ public class GenericDAO<T extends BaseEntity, ID extends Serializable> implement
             if (session != null) {
                 object = (T) session.get(entity, id);
             }
-            // Ignore it, if you're not going to use select for update or select across db links
             commitTransaction();
         } catch (HibernateException e) {
             rollbackTransaction();
@@ -81,7 +77,6 @@ public class GenericDAO<T extends BaseEntity, ID extends Serializable> implement
             if (session != null) {
                 objects = (List<T>) session.createQuery(String.format("from %s", entity.getSimpleName())).list();
             }
-            // Ignore it, if you're not going to use select for update or select across db links
             commitTransaction();
         } catch (HibernateException e) {
             rollbackTransaction();
@@ -89,5 +84,17 @@ public class GenericDAO<T extends BaseEntity, ID extends Serializable> implement
         }
 
         return objects;
+    }
+
+    public void save(final T entity) {
+        try {
+            createNewSessionAndTransaction();
+            if (session != null && entity != null) {
+                session.merge(entity);
+            }
+            commitTransaction();
+        } catch (HibernateException e) {
+            rollbackTransaction();
+        }
     }
 }
