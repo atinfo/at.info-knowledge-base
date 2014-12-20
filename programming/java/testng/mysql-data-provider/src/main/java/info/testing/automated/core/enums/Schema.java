@@ -1,9 +1,7 @@
 package info.testing.automated.core.enums;
 
 /**
- * Author: Serhii Kuts
- * Date: 1/9/14
- * Time: 3:44 PM
+ * Author: Sergey Kuts
  */
 public enum Schema {
     AUTOMATION,
