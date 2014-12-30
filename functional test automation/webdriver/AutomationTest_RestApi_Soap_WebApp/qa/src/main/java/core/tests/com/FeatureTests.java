@@ -28,8 +28,8 @@ public class FeatureTests {
 		WebElement signInButton = getElementById(driver, "signIn");
 
 		// Fill in form and log in
-		loginField.sendKeys("engage1.com@gmail.com");
-		passwordField.sendKeys("Enkata2012");
+		loginField.sendKeys("gmail@gmail.com");
+		passwordField.sendKeys("XXXXXXXX");
 		signInButton.click();
 		Thread.sleep(5000);
 
