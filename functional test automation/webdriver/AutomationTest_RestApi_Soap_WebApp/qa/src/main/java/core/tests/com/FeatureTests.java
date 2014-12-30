@@ -59,19 +59,4 @@ public class FeatureTests {
 
 		return driver.findElement(By.xpath(xpath));
 	}
-
-	public static Boolean findEmailInTheList(WebDriver driver, String email) {
-		for (int i = 1; i < 16; i++) {
-			try {				
-				String emailFind = driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/table/tbody/tr[" + i + "]/td[3]")).getAttribute("textContent");
-				if (emailFind.replace(" ", "").equals(email.replace(" ", "")))
-					return true;
-
-			} catch (Exception e) {
-
-			}
-
-		}
-		return false;
-	}
 }
