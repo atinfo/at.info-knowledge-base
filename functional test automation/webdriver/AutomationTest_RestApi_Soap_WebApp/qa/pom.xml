@@ -8,7 +8,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>6.3.1</version>
+			<version>6.8.13</version>
 		</dependency>		
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -42,8 +42,8 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 			
