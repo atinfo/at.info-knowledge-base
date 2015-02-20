@@ -12,21 +12,21 @@ And use it:
 <ul>
 <li>
 latitude, longitude mock:
-  
-  window.mockGeo.setPosition(10, -15.1212);
-</li>
-<li>
-   geolocation error mock:
-
-  window.mockGeo.setPositionErr(mockGeo.PERMISSION_DENIED);
-  window.mockGeo.setPositionErr(mockGeo.POSITION_UNAVAILABLE);
-  window.mockGeo.setPositionErr(mockGeo.TIMEOUT);
+<ul><li>window.mockGeo.setPosition(10, -15.1212);</li></ul>
 </li>
 
 <li>
-   speed mock (m/s):
+geolocation error mock:
+<ul>
+<li>window.mockGeo.setPositionErr(mockGeo.PERMISSION_DENIED);</li>
+<li>window.mockGeo.setPositionErr(mockGeo.POSITION_UNAVAILABLE);</li>
+<li>window.mockGeo.setPositionErr(mockGeo.TIMEOUT);</li>
+</ul>
+</li>
 
-  window.mockGeo.setSpeed(9);
+<li>
+speed mock (m/s):
+<ul><li>window.mockGeo.setSpeed(9);</li></ul>
 </li>
 </ul>
 
