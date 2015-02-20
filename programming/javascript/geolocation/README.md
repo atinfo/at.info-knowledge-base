@@ -1,4 +1,4 @@
-# geo-mock by https://github.com/fat-troll/js-geo-mock
+# geo-mock by <a href=https://github.com/fat-troll/js-geo-mock>fat-troll</a>
 
 If you are testing geolocation-based features, you may have been need to change your geolocation according to different tests. One more purpose is to use geolocation speed change. This javascript mock will help you, you can use it inside any test within any programming language.
 
