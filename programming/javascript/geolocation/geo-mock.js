@@ -1,3 +1,9 @@
+/*
+*   https://github.com/fat-troll/js-geo-mock
+*   Mock lat, long, speed, geolocation errors
+*   in real time within your tests :)
+*/
+
 var mockGeo;
 
 window.mockGeo = {
