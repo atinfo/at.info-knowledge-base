@@ -22,4 +22,4 @@ element = driver.find_element :id, 'submit'
 element.click
 
 # закрываем браузер
-driver.quit
+driver.close
