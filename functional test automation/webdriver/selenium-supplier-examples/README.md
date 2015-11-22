@@ -2,7 +2,7 @@ Selenium content supplier samples
 ======
 
 This code provides couple of usage examples for Selenium content supplier library:
-https://github.com/sskuts/selenium-supplier.
+https://github.com/sskorol/selenium-supplier.
 
 You can find detailed instruction in the following article:
 http://qa-automation-notes.blogspot.com/2015/08/selenium-content-supplier.html
