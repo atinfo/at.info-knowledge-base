@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FF test suite">
+    <test name="Google authorization tests">
+        <classes>
+            <class name="com.blogspot.notes.automation.qa.tests.AuthorizationTests">
+                <methods>
+                    <include name="correctLoginIntoGoogleAccount"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

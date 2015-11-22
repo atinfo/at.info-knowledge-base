@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Select2 suite">
+    <test name="Select2 test group">
+        <classes>
+            <class name="com.tools.qaa.tests.Select2Tests"/>
+        </classes>
+    </test>
+</suite>

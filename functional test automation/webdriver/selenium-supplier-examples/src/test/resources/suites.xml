@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium content supplier suite">
+    <test name="Selenium content supplier">
+        <classes>
+            <class name="com.tools.qaa.samples.SeleniumContentTests">
+                <methods>
+                    <include name="downloadAndUnZipFilesLocally"/>
+                    <include name="downloadFilesLocallyAndSendToRemote"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,38 @@
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+    <f:entry>
+        <f:entry title="Remote watcher service IP" field="remoteWatcherIp">
+            <f:textbox/>
+        </f:entry>
+        <f:entry title="Remote watcher service port" field="remoteWatcherPort">
+            <f:textbox/>
+        </f:entry>
+        <f:optionalBlock name="restartServices" title="Restart services" checked="${instance.restartServices}" inline="true">
+            <f:entry title="Re-starter service path" field="restarterServicePath">
+                <f:textbox/>
+            </f:entry>
+        </f:optionalBlock>
+        <f:optionalBlock name="reconfigureNode" title="Reconfigure node" checked="${instance.reconfigureNode}" inline="true">
+            <f:entry title="Node JSON path" field="nodeJsonPath">
+                <f:textbox/>
+            </f:entry>
+            <f:entry title="New hub IP" field="newHubIp">
+                <f:textbox/>
+            </f:entry>
+        </f:optionalBlock>
+        <f:entry title="Kill common tasks?" field="killCommonTasks"
+                 description="If checked, IE / FF and Chrome browser instances with related webdrivers will be killed.">
+            <f:checkbox/>
+        </f:entry>
+        <f:entry title="Kill java tasks?" field="killJavaTasks"
+                 description="If checked, Selenium Grid tasks will be killed.">
+            <f:checkbox/>
+        </f:entry>
+        <f:entry>
+            <div align="right">
+                <input type="button" value="Add node" class="repeatable-add show-if-last"/>
+                <input type="button" value="Delete" class="repeatable-delete show-if-not-only"
+                       style="margin-left: 1em;"/>
+            </div>
+        </f:entry>
+    </f:entry>
+</j:jelly>
