@@ -3,7 +3,7 @@ Environment Watcher - service for handling stuck automation processes
 
 Implemented via maven, jersey, apache-commons-exec.
 
-Main usage: killing browsers with their drivers / java processes (grid / sikuli / bmp) via Jenkins plugin https://github.com/sskuts/selenium-utils.
+Main usage: killing browsers with their drivers / java processes (grid / sikuli / bmp) via Jenkins plugin https://github.com/sskorol/selenium-utils.
 
 You can find detailed instruction here: http://qa-automation-notes.blogspot.com/2015/02/environment-watcher-or-how-to-create.html
 
